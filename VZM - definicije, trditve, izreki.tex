@@ -15,6 +15,7 @@
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\F}{\mathcal{F}}
 \renewcommand{\c}{\mathsf{c}}
+\newcommand{\diff}{\overset{\text{def}}{\iff}}
 \newcommand{\imp}{~\Rightarrow~}
 \newcommand{\set}[1]{\{#1\}}
 \newcommand{\oklepaj}[1]{\left(#1\right)}
@@ -67,22 +68,22 @@ Naj bo $\A \subset 2^\Omega$ (t.j. $\A \in 2^{2^\Omega}$). Potem rečemo, da je 
 \begin{itemize}
 
 \item $\c^\Omega$ (t.j. za komplement v $\Omega$) 
-$$\overset{\text{def}}{\iff} ~~~\forall A: (A \in \Omega \imp \Omega \setminus A \in \A);$$
+$$\diff ~~~\forall A: (A \in \Omega \imp \Omega \setminus A \in \A);$$
 
 \item $\cap$ (t.j. za preseke)
-$$\overset{\text{def}}{\iff} ~~~A_1 \cap A_2 \in \A ~~\text{brž ko je}~ \set{A_1,A_2} \subset A;$$
+$$\diff ~~~A_1 \cap A_2 \in \A ~~\text{brž ko je}~ \set{A_1,A_2} \subset A;$$
 
 \item $\cup$ (t.j. za unije)
-$$\overset{\text{def}}{\iff} ~~~A_1 \cup A_2 \in \A ~~\text{brž ko je}~ \set{A_1,A_2} \subset A;$$
+$$\diff ~~~A_1 \cup A_2 \in \A ~~\text{brž ko je}~ \set{A_1,A_2} \subset A;$$
 
 \item $\setminus$ (t.j. za razlike)
-$$\overset{\text{def}}{\iff} ~~~A_1 \setminus A_2 \in \A ~~\text{brž ko je}~ \set{A_1,A_2} \subset A;$$
+$$\diff ~~~A_1 \setminus A_2 \in \A ~~\text{brž ko je}~ \set{A_1,A_2} \subset A;$$
 
 \item $\sigma\cap$ (t.j. za števne preseke)
-$$\overset{\text{def}}{\iff} ~~~\bigcap_{n\in\N} A_n \in \A ~~\text{za vsako zaporedje}~ (A_n)_{n\in\N} ~\text{iz}~ \A;$$
+$$\diff ~~~\bigcap_{n\in\N} A_n \in \A ~~\text{za vsako zaporedje}~ (A_n)_{n\in\N} ~\text{iz}~ \A;$$
 
 \item $\sigma\cup$ (t.j. za števne unije)
-$$\overset{\text{def}}{\iff} ~~~\bigcup_{n\in\N} A_n \in \A ~~\text{za vsako zaporedje}~ (A_n)_{n\in\N} ~\text{iz}~ \A.$$
+$$\diff ~~~\bigcup_{n\in\N} A_n \in \A ~~\text{za vsako zaporedje}~ (A_n)_{n\in\N} ~\text{iz}~ \A.$$
 
 \end{itemize}
 
@@ -93,13 +94,13 @@ $$\overset{\text{def}}{\iff} ~~~\bigcup_{n\in\N} A_n \in \A ~~\text{za vsako zap
 
 $\A$ je \textit{$\sigma$-algebra} na $\Omega$
 \begin{align*}
-&\overset{\text{def}}{\iff} ~~~(\Omega,\A) ~~\text{je merljiv prostor} \\
-&\overset{\text{def}}{\iff} ~~~\emptyset \in \A ~\text{in}~ \A ~\text{je zaprt za}~ \c^\Omega ~\text{in za}~ \sigma\cup.
+&\diff ~~~(\Omega,\A) ~~\text{je merljiv prostor} \\
+&\diff ~~~\emptyset \in \A ~\text{in}~ \A ~\text{je zaprt za}~ \c^\Omega ~\text{in za}~ \sigma\cup.
 \end{align*}
 V primeru, da $\A$ je $\sigma$-algebra na $\Omega$:
 \begin{itemize}
-	\item $A$ je $\A$-merljiva $~\overset{\text{def}}{\iff}~ A \in \A;$
-	\item $\B$ je pod-$\sigma$-algebra $~\overset{\text{def}}{\iff}~ \B$ je $\sigma$-algebra na $\Omega$ in $\B \subset \A.$
+	\item $A$ je $\A$-merljiva $~\diff~ A \in \A;$
+	\item $\B$ je pod-$\sigma$-algebra $~\diff~ \B$ je $\sigma$-algebra na $\Omega$ in $\B \subset \A.$
 \end{itemize}
 
 \end{definicija}
@@ -119,35 +120,35 @@ Naj bo $\A \subset 2^\Omega$ zaprta za $\c^\Omega$ in naj bo $\emptyset \in \A$.
 
 \begin{definicija}
 
-Naj bo $(\Omega,\F)$ merljiv prostor in $\mu: \F \rightarrow [0,\infty]$. $\mu$ je \textit{mera} na $(\Omega,\F)$ $\overset{\text{def}}{\iff}$
+Naj bo $(\Omega,\F)$ merljiv prostor in $\mu: \F \rightarrow [0,\infty]$. $\mu$ je \textit{mera} na $(\Omega,\F)$ $\diff$
 \begin{itemize}
 	\item $\mu(\emptyset) ~=~ 0;$
 	\item $\mu\mathlarger{\oklepaj{\bigcup_{n\in\N}} ~=~ \sum_{n\in\N} \mu(A_n)}$ za vsako zaporedje $(A_n)_{n\in\N}$ iz $\F$, ki sestoji iz paroma disjunktnih dogodkov.
 \end{itemize}
 Lastnosti:
 \begin{itemize}
-	\item Mera $\mu$ na $(\Omega,\F)$ je \textit{končna} $\overset{\text{def}}{\iff}$ $\mu(\Omega)<\infty$.
-	\item Mera $\mu$ na $(\Omega,\F)$ je \textit{verjetnostna}\footnote{Tudi: $\mu$ je \textit{verjetnost}.} $\overset{\text{def}}{\iff}$ $\mu(\Omega) = 1$
+	\item Mera $\mu$ na $(\Omega,\F)$ je \textit{končna} $\diff$ $\mu(\Omega)<\infty$.
+	\item Mera $\mu$ na $(\Omega,\F)$ je \textit{verjetnostna}\footnote{Tudi: $\mu$ je \textit{verjetnost}.} $\diff$ $\mu(\Omega) = 1$
 	
-	\item Mera $\mu$ na $(\Omega,\F)$ je \textit{$\sigma$-končna} $\overset{\text{def}}{\iff}$ obstaja zaporedje $(A_n)_{n\in\N}$ v $\F$, da je
+	\item Mera $\mu$ na $(\Omega,\F)$ je \textit{$\sigma$-končna} $\diff$ obstaja zaporedje $(A_n)_{n\in\N}$ v $\F$, da je
 	\begin{align*}
 	\bigcup_{n\in\N} ~&=~ \Omega ~~~\text{in} \\
 	\mu(A_n) ~&<~ \infty, ~~~\forall n \in \N
 	\end{align*}
 	
 \end{itemize}
-$(\Omega,\F,\mu)$ je prostor z mero $\overset{\text{def}}{\iff}$ $\mu$ je mera na $(\Omega,\F)$. Če je $\mu$ mera na $(\Omega,\F)$ potem je $\mu(\Omega)$ \textit{masa} mere $\mu$. Če je $A \in \F$, potem je:
+$(\Omega,\F,\mu)$ je prostor z mero $\diff$ $\mu$ je mera na $(\Omega,\F)$. Če je $\mu$ mera na $(\Omega,\F)$ potem je $\mu(\Omega)$ \textit{masa} mere $\mu$. Če je $A \in \F$, potem je:
 \begin{itemize}
-	\item $A$ je \textit{$\mu$-zanemarljiv} $\overset{\text{def}}{\iff}$ $\mu(A) = 0$;
-	\item $A$ je \textit{$\mu$-trivialna} $\overset{\text{def}}{\iff}$ $A$ ali $\Omega\setminus A$ je $\mu$-zanemarljiva
+	\item $A$ je \textit{$\mu$-zanemarljiv} $\diff$ $\mu(A) = 0$;
+	\item $A$ je \textit{$\mu$-trivialna} $\diff$ $A$ ali $\Omega\setminus A$ je $\mu$-zanemarljiva
 \end{itemize}
 Če imamo poleg tega še lastnost $P(\omega)$ v $\omega \in A$, potem
 \begin{itemize}
-	\item $P(\omega)$ drži \textit{$\mu$-skoraj povsod} ($\mu$-s.p.) v $\omega \in A$ $\overset{\text{def}}{\iff}$ 
+	\item $P(\omega)$ drži \textit{$\mu$-skoraj povsod} ($\mu$-s.p.) v $\omega \in A$ $\diff$ 
 	$$A_{\neg P} ~:=~ \set{\omega \in \Omega \mid \neg P(\omega) \in \F ~\text{in}~ \mu(A_{\neg P}) = 0};$$
-	\item $P(\omega)$ drži \textit{$\mu$-skoraj gotovo} ($\mu$-s.g.) $\overset{\text{def}}{\iff}$ $P(\omega)$ drži $\mu$-skoraj povsod in $\mu$ je verjetnostna.
+	\item $P(\omega)$ drži \textit{$\mu$-skoraj gotovo} ($\mu$-s.g.) $\diff$ $P(\omega)$ drži $\mu$-skoraj povsod in $\mu$ je verjetnostna.
 \end{itemize}
-$P$ drži $\mu$-skoraj povsod na $A$ $\overset{\text{def}}{\iff}$ $P(\omega)$ drži $\mu$-skoraj povsod v $\omega \in A$. Podobno za ostale.
+$P$ drži $\mu$-skoraj povsod na $A$ $\diff$ $P(\omega)$ drži $\mu$-skoraj povsod v $\omega \in A$. Podobno za ostale.
 
 \end{definicija}
 \vspace{0.5cm}
