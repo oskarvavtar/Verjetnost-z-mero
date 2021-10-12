@@ -153,6 +153,78 @@ $P$ drži $\mu$-skoraj povsod na $A$ $\diff$ $P(\omega)$ drži $\mu$-skoraj povs
 \end{definicija}
 \vspace{0.5cm}
 
+\begin{trditev}
+
+Naj bo $\mu$ mera na $(\Omega, \F)$. Potem:
+\begin{enumerate}
+
+\item[(i)] $\mu$ je aditivna: 
+$$\mu(A \cup B) ~=~ \mu(A) + \mu(B)$$
+za vsaki disjunktivni množici $A,B \in \F$.
+
+\item[(ii)] $\mu$ je monotona:
+$$\mu(A) ~\leq~ \mu(B),$$
+če je $A \subset B$ in $A,B \in \F$
+
+\item[(iii)] $\mu$ je zvezna od spodaj:
+$$\mu\oklepaj{\bigcup_{n \in \N} A_n} ~=~ {\uparrow\text{-}\lim_{n \rightarrow \infty}} \mu(A_n)$$
+za vsako zaporedje $(A_n)_{n \in \N}$ iz $\F$, ki je nepadajoče glede na inkluzijo: $A_n \subset A_{n+1} ~\forall n \in \N$.
+
+\item[(iv)] $\mu$ je števno subaditivna:
+$$\mu\oklepaj{\bigcup_{n \in \N} A_n} ~\leq~ \sum_{n \in \N} \mu(A_n)$$
+za vsako zaporedje $(A_n)_{n \in \N}$ iz $\F$.
+
+\item[(v)] Naj bo $\mu$ končna:
+$$\mu(\Omega \setminus A) ~=~ \mu(\Omega) - \mu(A) ~\forall A \in \F.$$
+Naprej, $\mu$ je zvezna od zgoraj:
+$$\mu\oklepaj{\bigcap_{n \in \N} A_n} ~=~ {\downarrow\text{-}\lim_{n \rightarrow \infty}}\mu(A_n)$$
+za vsako zaporedje $(A_n)_{n \in \N}$ iz $\F$, ki je nenaraščajoča glede na inkluzijo: $A_n \supset A_{n+1} ~\forall n \in N$.
+
+\item[(vi)] Za vsak $A \in \F$ je
+$$\F \big|_A ~:=~ \set{B \cap A \mid B \in \F}$$
+$\sigma$-algebra na $A$ in $\mu_A := \mu\big|_{\F\big|_A}$ je mera na $(A, \F\big|_A)$. 
+
+\end{enumerate}
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+$\mu_A := \mu\big|_{\F\big|_A}$ rečemo \textit{mera $\mu$ zožana na $A$} oz. \textit{zožitev $\mu$ \hbox{na $A$}}.
+
+\end{definicija}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Merljive preslikave in generirane $\sigma$-algebre}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $\A \subset 2^\Omega$:
+$$\sigma_\Omega(\A) ~:=~ \bigcap\set{\F \in 2^{2^\Omega} \mid \F ~\sigma\text{-algebra na}~\Omega~\text{in}~\F\supset\A},$$
+rečemo $\sigma$-algebra z $A$ na $\Omega$. Če sta $\B_1$ in $\B_2$ obe $\sigma$-algebri na $\Omega$, potem definiramo
+$$\B_1 \vee \B_2 ~:=~ \sigma_\Omega(\B_1 \cup \B_2)$$
+in ji rečemo skupek $\B_1$ in $\B_2$. Bolj splošno, če imamo družino $\sigma$-algebr $(B_\lambda)_{\lambda\in\Lambda}$ na $\Omega$, potem postavimo
+$$\bigvee_{\lambda\in\Lambda} \B_\lambda ~:=~ \sigma_\Omega\oklepaj{\bigcup_{\lambda\in\Lambda} \B_\lambda}.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $f: \Omega \rightarrow \Omega'$. Če je dana $\sigma$-algebra $\F'$ na $\Omega'$, potem definiramo
+$$\sigma^{\F'}(f) ~:=~ \set{f^{-1}(A) \mid A \in \F }.$$
+Začetno strukturo $f$ glede na $\F'$ (tudi, $\sigma$-algebra generirana s $f$ glede na $\F'$). Če je dana $\sigma$-algebra $\F$ na $\Omega$, potem definiramo
+$$\sigma_\F^{\Omega'}(f) ~:=~ \set{A' \in 2^{\Omega'} \mid f^{-1}(A') \in \F}$$
+končno strukturo $f$ na $\Omega'$ glede na $\F$. Če sta dani $\sigma$-algebri $\F$ na $\Omega$ in $\sigma$-algebra $\F'$ na $\Omega$, potem rečemo: $f$ je $\F/\F'$-merljiva $\diff$
+$$f^{-1}(A') \in \F, ~~~\forall A' \in \F.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
 % *************************************************************************************************
 
 \pagebreak
