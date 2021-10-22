@@ -6,6 +6,7 @@
 \usepackage{amsmath, amssymb, amsfonts}
 \usepackage{relsize}
 \usepackage{mathrsfs}
+\usepackage{bbm}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
@@ -14,11 +15,14 @@
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\renewcommand{\H}{\mathcal{H}}
 \renewcommand{\c}{\mathsf{c}}
 \newcommand{\diff}{\overset{\text{def}}{\iff}}
 \newcommand{\imp}{~\Rightarrow~}
 \newcommand{\set}[1]{\{#1\}}
 \newcommand{\oklepaj}[1]{\left(#1\right)}
+\newcommand{\1}{\mathbbm{1}}
 
 \theoremstyle{definition}
 \newtheorem{definicija}{Definicija}[section]
@@ -216,13 +220,79 @@ $$\bigvee_{\lambda\in\Lambda} \B_\lambda ~:=~ \sigma_\Omega\oklepaj{\bigcup_{\la
 \begin{definicija}
 
 Naj bo $f: \Omega \rightarrow \Omega'$. Če je dana $\sigma$-algebra $\F'$ na $\Omega'$, potem definiramo
-$$\sigma^{\F'}(f) ~:=~ \set{f^{-1}(A) \mid A \in \F }.$$
+$$\sigma^{\F'}(f) ~:=~ \set{f^{-1}(A) \mid A \in \F'}.$$
 Začetno strukturo $f$ glede na $\F'$ (tudi, $\sigma$-algebra generirana s $f$ glede na $\F'$). Če je dana $\sigma$-algebra $\F$ na $\Omega$, potem definiramo
 $$\sigma_\F^{\Omega'}(f) ~:=~ \set{A' \in 2^{\Omega'} \mid f^{-1}(A') \in \F}$$
 končno strukturo $f$ na $\Omega'$ glede na $\F$. Če sta dani $\sigma$-algebri $\F$ na $\Omega$ in $\sigma$-algebra $\F'$ na $\Omega$, potem rečemo: $f$ je $\F/\F'$-merljiva $\diff$
 $$f^{-1}(A') \in \F, ~~~\forall A' \in \F.$$
 
 \end{definicija}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Če je $\F$ $\sigma$-algebra na $\Omega$ in je $\F'$ $\sigma$-algebra na $\Omega'$, potem označimo
+$$\F/\F' ~:=~ \set{f \in \Omega'^\Omega \mid f ~\text{je}~ \F/\F'\text{-merljiva}}.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Za $A \subset \Omega$ definiramo $\1_{A_\Omega}: \Omega \rightarrow \set{0,1}$,
+$$\1_{A_\Omega}(x) ~:=~ \begin{cases}
+1\,; ~&x \in A, \\
+0\,; ~&x \notin A,
+\end{cases}, ~~~x \in \Omega,$$
+ki ji rečemo \textit{indikatorska funkcija $A$ na ambientnem prostoru $\Omega$}.\footnote{Ponavadi namesto $\1_{A_\Omega}$ pišemo le $\1_A$.}
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Za $\sigma$-algebre $\F,\G,\H$, kjer $f \in \F/\G$ in $g \in \G/\H$ je
+$$g \circ f ~\in~ \F/\H.$$
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $f: \Omega \rightarrow \Omega'$:
+\begin{enumerate}
+
+\item[(i)] Za $\sigma$-algebro $\F'$ na $\Omega'$ je $\sigma^{\F'}(f)$ $\sigma$-algebra na $\Omega$; ona je najmanjša (glede na inkluzijo) $\sigma$-algebra $\G$ na $\Omega$, da je $f \in \G/\F'$.
+
+\item[(ii)] Za $\sigma$-algebro $\F$ na $\Omega$ je $\sigma_F^{\Omega'}(f)$ $\sigma$-algebra na $\Omega'$; ona je največja (glede na inkluzijo) $\sigma$-algebra $\G'$ na $\Omega$, da je $f \in \F/\G$.
+
+\item[(iii)] Za $\sigma$-algebro $\F$ na $\Omega$ in $\sigma$-algebro $\F'$ na $\Omega'$ je
+$$f \in \F/\F' ~\iff~ \sigma^{\F'}(f) \subset \F ~\iff~ \F' \subset \sigma_\F^{\Omega'}(f).$$
+
+\item[(iv)] Naj bo $\A' \sigma 2^{\Omega'}$ ter $\F$ $\sigma$-algebra na $\Omega$. Potem je
+$$f \in \F/\sigma_{\Omega'}(\A') ~\iff~ (f^{-1}(A') \in \F, ~\forall A' \in \A').$$
+Velja tudi 
+$$\sigma^{\sigma_{\Omega'}(\A')}(f) ~=~ \sigma_\Omega(\set{f^{-1}(A') \mid A' \in \A'}).$$
+
+\end{enumerate}
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+\textit{Sled $\A$ na $A$} definiramo kot
+$$\A \big|_A ~:=~ \set{B \cap A \mid B \in \A}.\footnote{\text{Zapis je isti kot za zožitev, vendar ne pomeni isto.}}$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}[Sledi komutirajo v generirani $\sigma$-algebri]
+
+Naj bo $\A \subset 2^\Omega$ in $A \subset \Omega$. Potem je
+$$\sigma_A(\A \big|_A) ~=~ \sigma_\Omega(\A) \big|_A.$$
+
+\end{trditev}
 \vspace{0.5cm}
 
 % *************************************************************************************************
