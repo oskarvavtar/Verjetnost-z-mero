@@ -17,12 +17,15 @@
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\G}{\mathcal{G}}
 \renewcommand{\H}{\mathcal{H}}
+\newcommand{\Z}{\mathcal{Z}}
+\newcommand{\D}{\mathcal{D}}
 \renewcommand{\c}{\mathsf{c}}
 \newcommand{\diff}{\overset{\text{def}}{\iff}}
 \newcommand{\imp}{~\Rightarrow~}
 \newcommand{\set}[1]{\{#1\}}
 \newcommand{\oklepaj}[1]{\left(#1\right)}
 \newcommand{\1}{\mathbbm{1}}
+\newcommand{\rr}{[-\infty,\infty]}
 
 \theoremstyle{definition}
 \newtheorem{definicija}{Definicija}[section]
@@ -293,6 +296,145 @@ Naj bo $\A \subset 2^\Omega$ in $A \subset \Omega$. Potem je
 $$\sigma_A(\A \big|_A) ~=~ \sigma_\Omega(\A) \big|_A.$$
 
 \end{trditev}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $f: \Omega \rightarrow \Omega'$ in naj bo $\F$ $\sigma$-algebra na $\Omega$ ter $\F'$ $\sigma$-algebra na $\Omega'$.
+\begin{enumerate}
+
+\item[(i)] Če je $A' \subset \Omega'$ in $f: \Omega \rightarrow A'$, potem je 
+$$f \in \F/\F' ~\iff~ f \in \F/(\F' \big|_{A'}).$$
+
+\item[(ii)] Če je $A \in \Omega$ in $f \in \F/\F'$, potem
+$$f\big|_A \in (\F\big|_A)/\F'.$$
+
+\item[(iii)] Če je $(A_i)_{i \in \N}$ zaporedje v $\F$ in $\Omega = \bigcup_{i \in \N} A_i$ in je $f\big|_{A_i} \in (\F\big|_{A_i})/\F' \\\forall i \in \N$, potem je
+$$f \in \F/\F'$$.
+
+\end{enumerate}
+
+\end{trditev}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Borelove množice na razširjeni realni osi $[-\infty,\infty]$ \\in Borelova merljivost numeričnih funkcij}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Definirajmo \textit{razširjeno realno os}:
+\begin{align*}
+\rr ~&:=~ \R \cup \set{\infty} \cup \set{-\infty} \\
+[-\infty, a] ~&:=~ \set{-\infty} \cup (-\infty,a] ~~~\text{za}~ a \in \R \cup \set{-\infty}
+\end{align*}
+Relacijo $\leq$ na $\R$ razširimo na $[-\infty,\infty]$ kot sledi:
+$$-\infty \leq x \leq \infty ~~~\forall x \in \rr.$$
+Temu ustrezno imamo ``$(<) ~:=~ (\leq) \setminus (=)$'', itd.
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+\textit{Borelovo $\sigma$-algebro} na $\rr$ definiramo kot
+$$\B_{\rr} ~:=~ \sigma_{\rr}(\set{[-\infty,a] \mid a \in \R}).$$
+Za $A \subset \rr$ je
+$$\B_A ~:=~ \B_{\rr} \big|_A$$
+Borelova $\sigma$-algebra na $A$. Elementom Borelovih $\sigma$-algebr pravimo \textit{Borelove množice}. 
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Funkcija $f$ je \textit{numerična}, če je $\Z_f \in \rr$.
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Če je funkcija $f$ numerična:
+\begin{itemize}
+
+\item $\sigma(f) ~:=~ \sigma^{\B_{\rr}}(f)$;
+
+\item če je $\F$ $\sigma$-algebra na domeni $f$, je $f$ $\F$-merljiva $\diff$ $f$ je $\F/\B_{\rr}$-merljiva;
+
+\item če je $g: \D_f \rightarrow \rr$, je
+\begin{align*}
+g \wedge f ~&:=~ \min\set{g,f}\footnote{$g \wedge f: \D_f \rightarrow \rr$ in $(g \wedge f)(\omega) := \min\set{g(\omega),f(\omega)} ~\forall \omega \in \D_f$} \\
+g \vee f ~&:=~ \max\set{g,f}.
+\end{align*}
+Definiramo \textit{pozitivni} in \textit{negativni del $f$}:
+\begin{align*}
+f^+ ~&:=~ f \vee 0 \\
+f^- ~&:=~ (-f) \vee 0
+\end{align*}
+
+\end{itemize}
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{opomba}
+~
+\begin{itemize}
+	\item $f ~=~ f^+ - f^-$
+	\item $|f| ~=~ f^+ + f^-$
+\end{itemize}
+
+\end{opomba}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Dogovorimo se
+\begin{align*}
+0 \cdot (\pm \infty) ~&:=~ 0 ~=:~ (\pm \infty) \cdot 0 \\
+\infty + (-\infty) ~&:=~ 0 ~=:~ (-\infty) + \infty.
+\end{align*}
+Preostanek aritmetike na $\rr$ definiramo na naraven način, npr.
+\begin{align*}
+a \cdot \infty ~&:=~ \text{sgn}(a) \cdot \infty ~~~\text{za}~ a \in \rr \setminus \set{0} \\
+a + \infty ~&:=~ \infty ~~~\text{za}~ a \in (-\infty, \infty] \\
+\infty - \infty ~&:=~ \infty + (-\infty) ~=~ 0 \\
+&itd.
+\end{align*}
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Če je $A \subset \rr$ in je $f: A \rightarrow \rr$ zvezna, potem je $f \in \B_A/\B_{\rr}$. Če je $\set{f,g} \subset \F/\B_{\rr}$ za $\sigma$-algebro $\F$, potem je 
+$$\set{f+g,f \cdot g} \subset \F/\B_{\rr}$$ 
+in 
+$$\set{\set{f \leq g}, \set{f=g}, \set{f<g}} \subset \F$$.
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $\F$ $\sigma$-algebra in $(f_n)_{n \in \N}$ zaporedje v $\F/\B_{\rr}$. Potem je
+$$\set{\sup_{n \in \N} f_n, \inf_{n \in \N} f_n, \limsup_{n \rightarrow \infty} f_n, \liminf_{n \rightarrow \infty} f_n} ~\subset~ \F/\B_{\rr}.$$
+Če je $f_n \geq 0 ~\forall n \in \N$, potem je 
+$$\sum_{n \in \N} f_n ~\in~ \F/\B_{[0,\infty]}.$$ 
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $\F$ $\sigma$-algebra. Za $\set{f,g} \subset \F/\B_{\rr}$ je
+$$\set{f \vee g, f \wedge g, f^+, f^-, |f|} ~\subset~ \F/\B_{\rr}.$$
+Za zaporedje $(f_n)_{n \in \N}$ v $\F/\B_{\rr}$ je
+$$\set{\set{f_n~\text{konverg., ko}~n\rightarrow\infty},\set{f_n~\text{konverg. v}~\R,~\text{ko}~n\rightarrow\infty},\set{\lim_{n\rightarrow\infty} f_n = f_\infty}} ~\subset~ \F.$$
+
+\end{definicija}
 \vspace{0.5cm}
 
 % *************************************************************************************************
