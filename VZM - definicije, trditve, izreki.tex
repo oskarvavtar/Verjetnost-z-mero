@@ -19,6 +19,10 @@
 \renewcommand{\H}{\mathcal{H}}
 \newcommand{\Z}{\mathcal{Z}}
 \newcommand{\D}{\mathcal{D}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\LL}{\mathscr{L}}
+\newcommand{\EE}{\mathcal{E}}
 \renewcommand{\c}{\mathsf{c}}
 \newcommand{\diff}{\overset{\text{def}}{\iff}}
 \newcommand{\imp}{~\Rightarrow~}
@@ -26,6 +30,8 @@
 \newcommand{\oklepaj}[1]{\left(#1\right)}
 \newcommand{\1}{\mathbbm{1}}
 \newcommand{\rr}{[-\infty,\infty]}
+\newcommand{\floor}[1]{\lfloor#1\rfloor}
+\newcommand{\id}{\text{id}}
 
 \theoremstyle{definition}
 \newtheorem{definicija}{Definicija}[section]
@@ -439,7 +445,202 @@ $$\set{\set{f_n~\text{konverg., ko}~n\rightarrow\infty},\set{f_n~\text{konverg. 
 
 % *************************************************************************************************
 
+\subsection{Argumenti monotonega razreda}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $\F$ $\sigma$-algebra na $\Omega$ in $f: \Omega \rightarrow [0, \infty)$:
+$$f ~\text{je}~ \F\text{-enostavna} ~\diff~ f \in \F/\B_{[0, \infty)} ~\text{in}~ \Z_f ~\text{je končna}.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $(\Omega, \F)$ merljiv prostor in $f: \Omega \rightarrow [0, \infty]$. Potem je $f$ $\F$-enostavna $\iff$
+$$f ~=~ \sum_{i=1}^n c_i \1_{A_i},$$
+za neke $c_i$, $i \in [n]$, iz $[0, \infty)$, neke $A_i$, $i \in [n]$, iz $\F$ in nek $n \in \N$. Naprej; če je $f \in \F/\B_{[0, \infty]}$, potem je 
+$$\oklepaj{(2^{-n}\floor{2^n f}) \wedge n}_{n \in \N}$$
+zaporedje $\F$-enostavnih funkcij, ki ne padajo k $f$ (celo enakomerno na vsaki množici na kateri je $f$ omejena).
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{posledica}[Izrek o monotonem razredu]
+
+Naj bo $\F$ $\sigma$-algebra na $\Omega$ in \hbox{$\M \subset \F/\B_{[0,\infty]}$}. Če je
+$$\1_A \in \M \quad \forall A \in \F$$
+in je $\M$ zaprta za nenegativne linearne kombinacije (je stožec)\footnote{Pomeni: $$\set{m_1,m_2}\subset\M, ~\set{c_1,c_2}\subset(0,\infty) ~\Rightarrow~ c_1 m_1 + c_2 m_2 \in \M$$} in je $\M$ zaprta za nepadajoče limite\footnote{Pomeni: $(f_n)_{n \in \N}$ nepadajoče zaporedje iz $\M$, potem je $$\lim_{n \rightarrow \infty} f_n \in \M$$} potem je
+$$\M ~=~ \F/\B_{[0, \infty]}.$$
+
+\end{posledica}
+\vspace{0.5cm}
+
+\begin{trditev}[Doob-Dynkinova faktorizacijska lema]
+
+Naj bo $X: \Omega \rightarrow A$, $(A, \A)$ merljiv prostor. Potem je
+$$Y \in \sigma^\A(X)/\B_{\rr} ~\iff~ \exists h \in \A/\B_{\rr}, ~\text{da je}~ Y = h \circ X = h(X).$$
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $\D \subset 2^\Omega$. $D$ je Dynkinov sistem (tudi $\lambda$-sistem) na $\Omega$ $\diff$
+\begin{itemize}
+	\item $\Omega \in \D$,
+	\item $B\setminus A \in \D $ brž ko je $ \D \ni A \subset B \in \D$,
+	\item če je $(A_i)_{i \in \N}$ je nepadajoče zaporedje v $\D$ je tudi $\bigcup_{n \in \N} A_n \in \D$.
+\end{itemize}
+$\D$ je $\pi$-sistem $\diff$ $\D$ je zaprt za $\cap$.
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $\D \subset 2^\Omega$. Potem je $\D$ Dynkinov sistem $\iff$
+\begin{itemize}
+	\item $\Omega \in \D$,
+	\item $\D$ zaprta za $\c^\Omega$,
+	\item $(A_i)_{i \in \N}$ zaporedje iz $\D$, $A_i \cap A_j = \emptyset$ za $i \neq j$ iz $\N$ $\Longrightarrow$ $\bigcup_{n \in \N} A_i \in \D$.
+\end{itemize}
+$\D$ je $\sigma$-algebra na $\Omega$ $\iff$ $\D$ je $\lambda$-sistem na $\Omega$ in $\pi$-sistem.
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Za $\L \subset 2^\Omega$ postavimo
+$$\lambda_\Omega(\L) ~:=~ \bigcap\set{\D \in 2^{2^\Omega} \mid \D ~\text{je}~\lambda\text{-sistem in}~\D\supset\L}.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $\L$ $\pi$-sistem in $\L \subset 2^\Omega$. Potem je
+$$\lambda_\Omega(\L) ~=~ \sigma_\Omega(\L).$$
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{posledica}[$\pi$-$\lambda$ izrek/Dynkinova lema]
+
+Naj bo $\L$ $\pi$-sistem in $\D$ $\lambda$-sistem na $\Omega$, $\L \subset \D$. Potem je
+$$\sigma_\Omega(\L) ~\subset~ \D.$$
+
+\end{posledica}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bosta $\mu, \nu$ meri na merljivem prostoru $(E,\EE)$, $\L \subset \EE$ $\pi$-sistem, $\sigma_E(\L) = \EE$. Predpostavimo, da je $\mu |_\L = \nu |_\L$ in da obstaja zaporedje $(L_n)_{n \in \N}$ iz $\L$, ki je nepadajoče ali sestoji iz paroma disjunktnih množic, in za katerega je
+\begin{itemize}
+	\item $\mu(L_n) ~=~ \nu(L_n) ~<~ \infty$,
+	\item $\bigcup_{n \in \N} L_n ~=~ E$.
+\end{itemize}
+Potem je 
+$$\mu ~=~ \nu$$.
+
+\end{trditev}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Lebesque-Stieltjesova mera}
+\vspace{0.5cm}
+
+\begin{izrek}[Lebesque-Stieltjesov izrek]
+
+Naj bo $F: \R \rightarrow \R$, nepadajoča in zvezna z desne (\textit{ca'd}). Potem obstaja natanko ena mera $\mu$ na $\B_\R$, da je
+$$\mu([a,b]) ~=~ F(b) - F(a) \quad \forall a\leq b \in \R.$$
+
+\end{izrek}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+$\mu$ iz prejšnjega izreka rečemo \textit{mera prirejena $F$ v Lebesque-Stieltjesovem smislu} in jo označimo z $dF$. V posebne primernu primeru, ko je $F = \id_\R$ ji rečemo \textit{Lebesqueva mera} in jo označimo
+$$\LL ~:=~ d(\id_\R).$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $F: \R \rightarrow \R$ \textit{ca'd}, nepadajoča. Potem je $dF$:
+\begin{itemize}
+	\item $\sigma$-končna $\iff$ je $F$ omejena:
+	$$dF(\R) ~=~ \lim_{n \rightarrow \infty} dF((-n,n])$$
+	\item verjetnostna $\iff$ $\lim_\infty F - \lim_{-\infty} F = 1$.
+\end{itemize}
+Za $x \in \R$ je 
+$$dF(\set{x}) ~=~ F(x) - F(x^-),$$
+$\set{x} = \bigcap_{n \in \N} (x - \frac{1}{n}, x]$.
+
+\end{trditev}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
 \pagebreak
+
+% #################################################################################################
+
+\section{Integracija na merljivih prostorih}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Lebesgueov integral}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $(\Omega, \F, \mu)$ prostor z mero $f \in \F/\B_{\rr}$.
+\begin{enumerate}
+
+\item[(a)] Za $f$, ki je $\F$-enostavna postavimo
+$$\int f\,d\mu ~:=~ \sum_{a \in \Z_f} d\mu(\set{f=a}) ~=~ \sum_{a \in \Z_f} d\mu(f^{-1}(\set{a})).$$
+
+\item[(b)] Za $f \geq 0$, ki ni $\F$-enostavna postavimo
+$$\int f\,d\mu ~:=~ \sup\set{\int g\,d\mu \mid g \leq f,~ g ~\F\text{-enostavna}}.$$
+
+\item[(c)] Za $\neg(f \geq 0)$, ki ni $\F$-enostavna postavimo
+$$\int f\,d\mu ~:=~ \int f^+\,d\mu - \int f^-\,d\mu.$$
+
+\end{enumerate}
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{dogovor}
+
+$$\mu[f] ~=~ \mu^x[f(x)] ~:=~ \int f(x)\,\mu(dx) ~:=~ \int f\,d\mu$$
+Če je še $A \in \F$, potem označimo še
+$$\mu[f; A] ~:=~ \mu^x[f(x); x \in A] ~:=~ \int_A f(x)\,\mu(dx) ~:=~ \int_A f\,d\mu ~:=~ \int f\1_A\,d\mu.$$
+Integral $f$ proti $\mu$ je \textit{dobro definiran} $\diff$
+$$\int f^+\,d\mu ~\wedge \int f^-\,d\mu ~<~ \infty;$$
+$f$ je $\mu$-integrabilna $\diff$
+$$\int f^+\,d\mu ~\vee \int f^-\,d\mu ~<~ \infty.$$
+
+\end{dogovor}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $(\Omega, \F, \mu)$ prostor z mero:
+$$\L^1(\mu) ~:=~ \set{f \in \F/\B \mid f ~\text{je}~ \mu\text{-integrabilna}}.$$
+Za $g: \Omega \rightarrow \mathbb{C}$ z $\set{\mathfrak{R}(g), \mathfrak{I}(g)} \subset \L^1(\mu)$ je
+$$\int g\,d\mu ~:=~ \int \mathfrak{R}(g)\,d\mu + i\int \mathfrak{I}(g)\,d\mu.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+% *************************************************************************************************
 
 % #################################################################################################
 
