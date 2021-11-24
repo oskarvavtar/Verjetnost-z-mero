@@ -7,6 +7,7 @@
 \usepackage{relsize}
 \usepackage{mathrsfs}
 \usepackage{bbm}
+\usepackage{xcolor}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
@@ -18,6 +19,8 @@
 \newcommand{\G}{\mathcal{G}}
 \renewcommand{\H}{\mathcal{H}}
 \newcommand{\Z}{\mathcal{Z}}
+\newcommand{\X}{\mathcal{X}}
+\renewcommand{\O}{\mathcal{O}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\M}{\mathcal{M}}
 \renewcommand{\L}{\mathcal{L}}
@@ -640,7 +643,266 @@ $$\int g\,d\mu ~:=~ \int \mathfrak{R}(g)\,d\mu + i\int \mathfrak{I}(g)\,d\mu.$$
 \end{definicija}
 \vspace{0.5cm}
 
+\begin{izrek}
+
+Naj bo $(\Omega, \F, \mu)$ prostor z mero. Integral ima naslednje lastnosti:
+\begin{enumerate}
+
+\item[(i)] Aditivnost:
+$$\int f+g \,d\mu  ~=~ \int f \,d\mu + \int g \,d\mu,$$
+za $\set{f,g} \subset \F/\B_{\rr}$ z $\mu[f^-] \vee \mu[g^-] < \infty$
+
+\item[(ii)] Integral indikatorja:
+$$\int \1_A \,d\mu ~=~ \mu(A), \quad \forall A \in \F.$$
+V posebnem primeru je $\mu[0] = 0$ in torej $\mu[f^+] - \mu[f^-] = \mu[f] ~\forall f \in \F/\B_{\rr}$.
+
+\item[(iii)] Integrali, ki so $0$ in so končni:
+\\za $f \in \F/\B_{[0,\infty]}$:
+\begin{itemize}
+	\item $\mu[f] = 0$ $\iff$ $f=0$ s.p.-$\mu$  
+	\item $\mu[f] < \infty$ $\Longrightarrow$ $f<\infty$ s.p.-$\mu$.
+\end{itemize}
+
+\item[(iv)] Trikotniška neenakost:
+$$\left|\int f \,d\mu\right| \leq \int |f| \,d\mu, \quad \forall f \in \F/\B_{\rr}.$$
+
+\item[(v)] Integral ``ne vidi'' množic z mero $0$:
+\\če je $\set{f,g} \subset \F/\B_{\rr}$ in je $f=g$ s.p.-$\mu$, potem je $\mu[f]=\mu[g]$ in je $\mu[f]$ d.d. $\iff$ $\mu[g]$ je d.d.
+
+\item[(vi)] Monotonost:
+če je $\set{f,g} \subset \F/\B_{\rr},$ $g\leq f$ in $\mu[g^-] < \infty$, potem je
+$$\int g\,d\mu ~\leq~ \int f \,d\mu.$$
+
+\item[(vii)] Homogenost:
+$$\int c f \,d\mu ~=~ c \int f \,d\mu$$
+za vse $f \in \F/\B_{\rr}$ za katere je $\mu[cf^-] \wedge \mu[cf^+] < \infty$, za \hbox{$\forall c \in \rr$}.
+
+\end{enumerate}
+Vsi integrali v (i),(ii),(iii),(vi) so d.d. Enako velja za (vii), razen, ko je $c=0$ in $\mu[f^+]=\mu[f^-]=\infty$.
+
+\end{izrek}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bosta $a \leq b$ realni števili in $f: [a,b] \rightarrow \R$. Če je $f$ zvezna, potem je $\LL$-integrabilna in 
+$$\int_{[a,b]} f \,d\LL ~=~ \int_a^b f(x)\,dx.$$
+
+\end{trditev}
+\vspace{0.5cm}
+
 % *************************************************************************************************
+
+\subsection{Konvergenčni izreki s posledicami}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Naj bo $(\Omega, \F,\mu)$ prostor z mero in $(f_n)_{n \in \N}$ zaporedje iz $\F/\B_{\rr}$.
+\begin{itemize}
+
+\item[(i)] Naj bo $g \in \F/\B_{[0,\infty]}$ z $\mu[g] < \infty$ in $f_n^- \leq g ~\forall n \in \N$. Potem velja:
+\begin{itemize}
+	\item[(a)] Polzveznost od spodaj (Fatou):
+	$$\int \liminf_{n \rightarrow \infty} f_n \,d\mu ~\leq \liminf_{n \rightarrow \infty} \int f_n \,d\mu$$
+	\item[(b)] Monotona konvergenca (L\'evy):
+	$$\int \lim_{n \rightarrow \infty} f_n \,d\mu ~=~ \uparrow\text{-}\lim_{n \rightarrow \infty} \int f_n d\mu$$
+\end{itemize}
+
+\item[(ii)] Naj bo $g \in \F/\B_{[0,\infty]}$ $\mu$-integrabilna z $|f_n| \leq g ~\forall n \in \N$. Potem velja dominirana konvergenca (Lebesgue):
+$$\lim_{n \rightarrow \infty} \int |f_n - \lim_{m \rightarrow \infty} f_m| \,d\mu ~=~ 0$$ 
+in v posebnem je
+$$lim_{n \rightarrow \infty} \int f_n \,d\mu ~=~ \int \lim_{n \rightarrow \infty} f_n \,d\mu,$$
+če seveda $\exists \lim_{m \rightarrow \infty} f_m$ (povsod).
+
+\end{itemize}
+
+\end{izrek}
+\vspace{0.5cm}
+
+\begin{posledica}
+
+Naj bo $(\Omega, \F, \mu)$ prostor z mero in $(f_n)_{n \in \N}$ zaporedje iz $\F/\B_{[0,\infty]}$. Potem je
+$$\int \sum_{n \in \N} f_n \,d\mu ~=~ \sum_{n \in \N} \int f_n \,d\mu,$$
+kjer so integrali d.d.
+
+\end{posledica}
+\vspace{0.5cm}
+
+\begin{posledica}
+
+Naj bo $(\mu_n)_{n \in \N}$ zaporedje mer na merljivem prostoru $(\Omega, \F)$. Potem je $\sum_{n \in \N} \mu_n$ mera na $(\Omega, \F):$
+$$\oklepaj{\sum_{n \in \N} \mu_n}(A) ~=~ \sum_{n \in \N} \mu_n(A), \quad A \in \F.$$
+Poleg tega je za $\forall f \in \F/\B_{\rr}$:
+$$\int f \,d(\sum_{n \in \N} \mu_n) ~\text{je d.d.} ~\iff~ \oklepaj{\sum_{n \in \N} \int f^+ \,d\mu_n} \wedge \oklepaj{\sum_{n \in \N} \int f^- \,d\mu_n} < \infty$$
+in tedaj je
+$$\int f \,d(\sum_{n \in \N} \mu_n) ~=~ \sum_{n \in \N} \int f \,d\mu_n.$$
+
+\end{posledica}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $(\Omega, \F, \mu)$ porostor z mero, $(\Omega', \F')$ merljiv prostor, $f \in \F/\F'$. Potem definiramo
+$$f *_{\F'} \mu \quad \text{oz.} \quad \mu \circ_{\F'} f^{-1} \quad \text{oz.} \quad \mu_{f_{\F'}}$$
+kot preslikavo $f *_{\F'} \mu: \F' \rightarrow [0,\infty]$, dano s predpisom
+$$(f *_{\F'} \mu)(A') ~:=~ \mu(f^{-1}(A')), \quad A' \in \F'.$$
+To preslikavo imenujemo \textit{potisk mere $\mu$ naprej pod $f$ glede na $\F'$}. Če je $\mu$ verjetnostna, rečemo temu \textit{porazdelitev}.
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{posledica}[Izrek o sliki mer]
+
+Naj bo $(\Omega, \F, \mu)$ prostor z mero, $(\Omega', \F')$ merljiv prostor, $f \in \F/\F'$. Potem je $f * \mu$ mera na $\F'$, verjetnostna, če je $\mu$ verjetnostna. Če je $g \in \F'/\B_{\rr},$ je
+$$\int g \,d(f*\mu) ~=~ \int g \circ f \,d\mu,$$
+pri čemer je integral na levi d.d. $\iff$ je to res za integral na desni.
+
+\end{posledica}
+\vspace{0.5cm}
+
+\begin{posledica}[Odvajanje pod integralskim znakom]
+
+Naj bo $(\X, \Sigma, \mu)$ prostor z mero, $\O$ odprt v $\R$. $F: \X \times \O \rightarrow \R$ in naj velja:
+\begin{itemize}
+	\item $\forall t \in \O$ je $\F(\cdot,t) \in \L^1(\mu)$;
+	\item $\forall x \in \X$ je $\F(x,\cdot)$ odvedljiva.
+\end{itemize}
+Naj naprej $\exists g \in \Sigma/\B_{[0,\infty]}$ z $\mu[g]<\infty$ tako, da je
+$$\left|\frac{\partial F}{\partial t}(x,t)\right| ~\leq~ g(x), \quad \forall (x,t) \in \X \times \O.$$
+Potem velja:
+\begin{enumerate}
+	\item[(a)] $\forall t \in \O$ je $\oklepaj{\X \ni x \mapsto \frac{\partial F}{\partial t}(x,t)} \in \L^1(\mu)$;
+	\item[(b)] $\oklepaj{\O \ni t \mapsto \int F(x,t) \,\mu(dx)}$ je odvedljiva;
+	\item[(c)] $t \in \O$:
+	$$\frac{d}{dt} \int F(x,t) \,\mu(dx) ~=~ \int \frac{\partial F}{\partial t}(x,t)\,\mu(dx).$$
+\end{enumerate}
+
+\end{posledica}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\section{Rezultati, ki se tičejo menjave vrsrnega reda \\integracije}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bosta $(\Omega, \F)$ in $(\Omega', \F')$ merljiva prostora. Potem definiramo
+$$\F \otimes \F' ~:=~ \sigma_{\Omega\times\Omega'} \oklepaj{\set{A \times A' \mid (A,A') \in \F\times\F'}},$$
+in ji rečemo \textit{produktna $\sigma$-algebra $\F$ in $\F'$}.
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Če je $A \subset \R^2$ in $f: A \rightarrow \rr$ zvezna, potem  je 
+$$f \in \B_A/\B_{\rr}.$$
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bosta $(\Omega, \F)$ in $(\Omega', \F')$ merljiva prostora. Potem je $\F \otimes \F'$ najmanjša (glede na inkluzijo) $\sigma$-algebra na $\Omega \times \Omega'$ glede na katero sta merljivi kanonični projekciji, tj. $\F \otimes \F'$ je najmanjša $\sigma$-algebra $\G$ na $\Omega\times\Omega'$, da je:
+\begin{itemize}
+	\item $\oklepaj{\Omega \times \Omega' \ni (\omega, \omega') \mapsto \omega} \in \G/\F$;
+	\item $\oklepaj{\Omega \times \Omega' \ni (\omega, \omega') \mapsto \omega'} \in \G/\F'$.
+\end{itemize}
+Naprej, če je $f \in \F \otimes \F'/\B_{\rr}$, potem je $f(\omega, \cdot) \in \F'/\B_{\rr},$ $\forall \omega \in \Omega$ in $f(\cdot, \omega') \in \F/\B_{\rr},$ $\forall \omega' \in \Omega'$. Obratno, naj bo $(G,\G)$ merljiv prostor; potem je
+$$(f,f') \in \G/\F\otimes\F' ~\iff~ f \in \G/\F ~\text{in}~ f' \in \G/\F'.$$
+ 
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{izrek}
+
+Naj bosta $(\Omega, \F, \mu)$ in $(\Omega', \F', \mu')$ prostora z mero, $\mu$ in $\mu'$ \hbox{$\sigma$-končni}.
+\begin{enumerate}
+
+\item[(i)] Obstaja natanko ena mera $\nu$ na $\F\otimes\F'$, ki jo označimo $\mu\times\mu'$, za katero velja
+$$\nu(A\times A') ~=~ \mu(A)\mu'(A'), \quad \forall (A,A')\in\F\times\F'.$$
+
+\item[(ii)] Naj bo $f \in (\F\otimes\F')/\B_{\rr}$ in naj velja
+\begin{enumerate}
+	\item[(a)] $f \geq 0$ \textit{(Tonelli)} ali
+	\item[(b)] $\int |f|\,d(\mu\times\mu') < \infty$ \textit{(Fubini)} ali
+	\item[(c)] $\iint f^-(\omega,\omega')\,\mu(d\omega)\,\mu'(d\omega') ~\wedge~ \iint f^-(\omega,\omega')\,\mu'(d\omega')\,\mu(d\omega) < \infty$
+\end{enumerate}
+
+\end{enumerate}
+Potem je 
+\begin{itemize}
+	\item $\oklepaj{\Omega'\ni\omega' \mapsto \int f(\omega,\omega')\,\mu(d\omega)} \in \F'/\B_{\rr}$;
+	\item $\oklepaj{\Omega\ni\omega \mapsto \int f(\omega,\omega')\,\mu'(d\omega')} \in \F/\B_{\rr}$;
+	\item $\int f^-(\omega,\omega')\,\mu(d\omega) < \infty$ s.p.-$\mu'$ v $\omega'$;
+	\item $\int f^-(\omega,\omega')\,\mu'(d\omega') < \infty$ s.p.-$\mu$ v $\omega$;
+\end{itemize}
+in 
+\begin{align*}
+\int f\,d(\mu\times\mu') ~&=~ \iint f(\omega,\omega')\,\mu(d\omega)\,\mu'(d\omega')  \\
+&=~ \iint f(\omega,\omega')\,\mu'(d\omega')\,\mu(d\omega).
+\end{align*}
+Vsi zunanji integrali zgoraj so d.d.
+
+\end{izrek}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Notacijo $\mu\times\mu'$ zadržimo, $\mu\times\mu'$ rečemo \textit{produkt $\mu$ in $\mu'$}. 
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+$(\Omega,\F,\mu)$ prostor z mero, $(\Omega',\F')$ merljiv prostor, $X \in \F/\F'$, $(A,\A)$ še en merljiv prostor, da je
+$$D_A ~:=~ \set{(x,x) \mid x \in A} \in \A\otimes\A$$
+in $\set{f,g} \subset \F'/\A$. Potem je $f(X) = g(X)$ s.p.-$\mu$ $\iff$ $f=g$ s.p.-$X_*\mu$.
+
+\end{trditev}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Nedoločena integracija in absolutna zveznost}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bosta $(\Omega,\F,\mu)$ prostor z mero, $f \in \F'/\B_{\rr}$ in naj bo integral $f$ pod $\mu$ d.d. Potem preslikavi
+$$f \cdot \mu ~:=~ \oklepaj{\F \in A \mapsto \int_A f\,d\mu}$$
+rečemo \textit{nedoločeni integral $f$ proti $\mu$}\footnote{Beri: glede na $\mu$.}, ali tudi tudi \textit{$\mu$-nedoločeni integral $f$}.
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bosta $\mu$ in $\nu$ dve meri na merljivem prostoru $(\Omega,\F)$. $\mu$ je absolutno zvezna glede na $\nu$ (pišemo $\mu \ll \nu$) $\diff$
+$$\nu(A) = 0 ~\Rightarrow~ \mu(A), \quad \forall A \in \F.$$
+$\mu$ je ekvivalentna $\nu$, (pišemo $\mu\sim\nu$) $\diff$
+$$\mu \ll \nu \quad \text{in} \quad \nu \ll \mu.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $(\Omega,\F,\mu)$ prostor z mero in $f \in \F/\B_{[0,\infty]}$. Potem je $f \cdot \mu$ mera, ki je absolutno zvezna glede na $\mu$; naprej
+$$\int g \,d(f\cdot\mu) ~=~ \int g\,\color{teal}f(d\mu)\color{black}$$
+za vse $g \in \F/\B_{\rr},$ pri čemer je integral na levi d.d. $\iff$ je integral na desni d.d. in v slednjem primeru je 
+$$g \cdot (f \cdot \mu) ~=~ (gf) \cdot \mu.$$
+Če je $f>0$ s.p.-$\mu$, potem je $f\cdot\mu \sim \mu$.
+
+\end{trditev}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\pagebreak
 
 % #################################################################################################
 
