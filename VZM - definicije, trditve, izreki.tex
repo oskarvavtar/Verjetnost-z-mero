@@ -14,7 +14,7 @@
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\A}{\mathcal{A}}
-\newcommand{\B}{\mathcal{B}}
+\newcommand{\B}{\mathscr{B}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\G}{\mathcal{G}}
 \renewcommand{\H}{\mathcal{H}}
@@ -23,7 +23,7 @@
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\M}{\mathcal{M}}
-\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\L}{L}
 \newcommand{\LL}{\mathscr{L}}
 \newcommand{\EE}{\mathcal{E}}
 \renewcommand{\c}{\mathsf{c}}
@@ -35,6 +35,7 @@
 \newcommand{\rr}{[-\infty,\infty]}
 \newcommand{\floor}[1]{\lfloor#1\rfloor}
 \newcommand{\id}{\text{id}}
+\newcommand{\supp}{\text{supp}}
 
 \theoremstyle{definition}
 \newtheorem{definicija}{Definicija}[section]
@@ -232,11 +233,11 @@ $$\bigvee_{\lambda\in\Lambda} \B_\lambda ~:=~ \sigma_\Omega\oklepaj{\bigcup_{\la
 \begin{definicija}
 
 Naj bo $f: \Omega \rightarrow \Omega'$. Če je dana $\sigma$-algebra $\F'$ na $\Omega'$, potem definiramo
-$$\sigma^{\F'}(f) ~:=~ \set{f^{-1}(A) \mid A \in \F'}.$$
+$$\sigma^{\F'}(f) ~:=~ \set{f^{-1}(A'); ~A' \in \F'}.$$
 Začetno strukturo $f$ glede na $\F'$ (tudi, $\sigma$-algebra generirana s $f$ glede na $\F'$). Če je dana $\sigma$-algebra $\F$ na $\Omega$, potem definiramo
 $$\sigma_\F^{\Omega'}(f) ~:=~ \set{A' \in 2^{\Omega'} \mid f^{-1}(A') \in \F}$$
 končno strukturo $f$ na $\Omega'$ glede na $\F$. Če sta dani $\sigma$-algebri $\F$ na $\Omega$ in $\sigma$-algebra $\F'$ na $\Omega$, potem rečemo: $f$ je $\F/\F'$-merljiva $\diff$
-$$f^{-1}(A') \in \F, ~~~\forall A' \in \F.$$
+$$f^{-1}(A') \in \F, ~~~\forall A' \in \F'.$$
 
 \end{definicija}
 \vspace{0.5cm}
@@ -553,10 +554,10 @@ $$\mu ~=~ \nu$$.
 
 % *************************************************************************************************
 
-\subsection{Lebesque-Stieltjesova mera}
+\subsection{Lebesgue-Stieltjesova mera}
 \vspace{0.5cm}
 
-\begin{izrek}[Lebesque-Stieltjesov izrek]
+\begin{izrek}[Lebesgue-Stieltjesov izrek]
 
 Naj bo $F: \R \rightarrow \R$, nepadajoča in zvezna z desne (\textit{ca'd}). Potem obstaja natanko ena mera $\mu$ na $\B_\R$, da je
 $$\mu([a,b]) ~=~ F(b) - F(a) \quad \forall a\leq b \in \R.$$
@@ -566,7 +567,7 @@ $$\mu([a,b]) ~=~ F(b) - F(a) \quad \forall a\leq b \in \R.$$
 
 \begin{definicija}
 
-$\mu$ iz prejšnjega izreka rečemo \textit{mera prirejena $F$ v Lebesque-Stieltjesovem smislu} in jo označimo z $dF$. V posebne primernu primeru, ko je $F = \id_\R$ ji rečemo \textit{Lebesqueva mera} in jo označimo
+$\mu$ iz prejšnjega izreka rečemo \textit{mera prirejena $F$ v Lebesgue-Stieltjesovem smislu} in jo označimo z $dF$. V posebne primernu primeru, ko je $F = \id_\R$ ji rečemo \textit{Lebesgueva mera} in jo označimo
 $$\LL ~:=~ d(\id_\R).$$
 
 \end{definicija}
@@ -783,7 +784,7 @@ Potem velja:
 
 % *************************************************************************************************
 
-\section{Rezultati, ki se tičejo menjave vrsrnega reda \\integracije}
+\subsection{Rezultati, ki se tičejo menjave vrsrnega reda \\integracije}
 \vspace{0.5cm}
 
 \begin{definicija}
@@ -898,6 +899,217 @@ $$g \cdot (f \cdot \mu) ~=~ (gf) \cdot \mu.$$
 Če je $f>0$ s.p.-$\mu$, potem je $f\cdot\mu \sim \mu$.
 
 \end{trditev}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\begin{trditev}
+
+Naj bo $(X, \A, \mu)$ prostor z mero, $\set{f,g} \subset \A/\B_{\rr}$.
+\begin{enumerate}
+
+\item[(a)] Denimo, da je $\int_{\set{f>g}} f^+\,d\mu \vee \int_{\set{f>g}} g^-\,d\mu <\infty$ in \hbox{$\int_{\set{f>g}} f\,d\mu \leq \int_{\set{f>g}} g\,d\mu$}. Potem je 
+$$f~<~g \quad \text{s.p.-}\mu.$$
+
+\item[(b)] Denimo, da je $\mu$ $\sigma$-končna, \hbox{$\oklepaj{\int f^+\,d\mu \wedge \int f^-\,d\mu} \vee \oklepaj{\int g^+\,d\mu \wedge \int g^-\,d\mu} < \infty$} in $\int_A f\,d\mu \leq \int_A g\,d\mu$, $\forall A \in \A$. Potem je
+$$f ~\leq~ g \quad \text{s.p.-}\mu.$$ 
+
+\end{enumerate}
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{posledica}
+
+Naj bo $(X,\A,\mu)$ prostor z mero, $\set{f,g} \subset \A/\B_{\rr}$. Denimo, da je $\int_A f\,d\mu = \int_A g\,d\mu$, $A \in \A$, pri čemer sta $\mu[f]$ in $\mu[g]$ d.d. Če je $f$ (ali/torej $g$) $\mu$-integrabilna ali če je $\mu$ $\sigma$-končna, potem je
+$$f~=~g \quad \text{s.p.-}\mu.$$ 
+V primeru, ko sta $f$ in $g$ $\mu$-integrabilna, potem je, ceteris paribus, enakost $\int_A f\,d\mu = \int_A g\,d\mu$ dovolj preveriti za $A \in \Pi \cup \set{X}$, kjer je $\Pi$ nek $\pi$-sistem, ki generira $\A$ na $X$.
+
+\end{posledica}
+\vspace{0.5cm}
+
+\begin{izrek}[Radon-Nikodym]
+
+Naj bosta $\mu$ in $\nu$ $\sigma$-končni meri na istem merljivem prostoru $(\Omega, \F)$, $\mu \ll \nu$. Potem obstaja $f \in \F/\B_{[0,\infty]}$, enolična do enakosti s.p.-$\mu$, za katero je
+$$\mu ~=~ f\cdot\nu,$$
+$f>0$ s.p.-$\mu$.
+
+\end{izrek}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Funkcijo $f$ iz zgornjega izreka označimo z $$\frac{d\mu}{d\nu}.$$ Rečemo ji \textit{Radon-Nikodymov odvod}.
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{posledica}
+
+Naj bodo $\mu \ll \nu \ll \lambda$ $\sigma$-končne mere na $\sigma-algebri$. Potem je $\mu \ll \lambda$ in 
+$$\frac{d\mu}{d\lambda} ~=~ \frac{d\mu}{d\nu}\cdot\frac{d\nu}{d\lambda} \quad \text{s.p.-}\lambda.$$
+Torej, če je $\mu \sim \nu$,
+$$1 ~=~ \frac{d\mu}{d\nu}\frac{d\nu}{d\mu} \quad \text{s.p.-}\mu ~\text{in}~ \text{s.p.-}\nu.$$
+
+\end{posledica}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Prostori $L$ in nekaj integralskih neenakosti}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $(\Omega, \F, \mu)$ prostor z mero, $p \in [1,\infty)$ in $f \in \F/\B_{\rr}$, definiramo:
+\begin{itemize}
+\item prostor $L^p$:
+\begin{align*}
+\|f\|_{p_\mu} ~&:=~ \oklepaj{\int |f|^p\,d\mu}^\frac{1}{p}, \\
+L^p(\mu) ~&:=~ \set{f \in \F/\B_\R;~\|f\|_{p_\mu}<\infty},
+\end{align*}
+\item prostor $L^\infty$:
+\begin{align*}
+\|f\|_{\infty_\mu} ~&:=~ \inf\set{M \in [0,\infty];~|f| \leq M ~\text{s.p.-}\mu}, \\
+L^\infty(\mu) ~&:=~ \set{f \in \F/\B_\R;~\|f\|_{\infty_\mu}<\infty}.
+\end{align*}
+\end{itemize}
+Za zaporedje $(f_n)_{n \in \N_0}$ v $L^q(\mu)$, $q \in [1,\infty]$, rečemo da $f_n \xrightarrow{n \rightarrow \infty} f_0$ v $L^q(\mu)$ $\diff$ 
+$$\|f_n-f_0\|_{q_\mu} ~\xrightarrow{n \rightarrow \infty}~ 0.$$
+Za $\set{f,g} \subset L^2(\mu)$,
+$$\langle f,g \rangle = \int fg\,d\mu.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $\mu$ končna mera in $p \leq q$, $\set{p,q} \subset [1,\infty]$. Potem je
+$$L^q(\mu) ~\subset~ L^p(\mu).$$
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $(\Omega, \F, \mu)$ prostor z mero, $\set{f,g} \subset \F/\B_{\rr}$. Imamo sledeče neenakosti:
+\begin{enumerate}
+
+\item[(i)] Markov:
+$$\mu[f;f\geq a] ~\geq~ a \cdot \mu(f \geq a), \quad \forall a \in \rr;$$
+torej $\mu[f] \geq a\mu(f \geq a)$ za $\forall a \in [0,\infty]$, brž ko je $f \geq 0$.
+
+\item[(ii)] Minkowski:
+$$\|f+g\|_p ~\leq~ \|f\|_p + \|g\|_p, \quad \forall p \in [1,\infty]$$
+
+\item[(iii)] H\"older:
+$$\|fg\|_1 ~\leq~ \|f\|_p \|g\|_q, \quad \forall \set{p,q} \subset [1,\infty],~p^{-1} + q^{-1}=1.$$
+V posebnem $p=q=2$, Cauchy-Schwartzova neenakost.
+
+\item[(iv)] Jensen: \\
+naj bo $\mu$ verjetnostna, $f \in L^1(\mu)$, $\varphi: I \rightarrow \R$ konveksna, $I$ odprt interval, $f: \Omega \rightarrow I$. Potem je $\varphi \in \B_I/\B_\R$, $\int\oklepaj{\varphi \circ f}^-\,d\mu < \infty$, $\int f\,d\mu \in I$ in 
+$$\int \varphi \circ f\,d\mu ~\geq~ \varphi\oklepaj{\int f\,d\mu}.$$ 
+Najprej, za $\forall p \in [1,\infty]$ je $\|\cdot\|_p$ seminorma na $L^p(\mu)$, ki je realni linearen prostor, in v njem je $\|\cdot\|_p$-limita zaporedje, če obstaja, s.p.-$\mu$ enolično določena; obstaja \textit{čee} je dano zaporedje Cauchyjevo v seminormi $\|\cdot\|_p$. Končno, $\langle \cdot,\cdot \rangle$ je skalarni semiprodukt na $L^2(\mu)$.
+
+\end{enumerate}
+
+\end{trditev}
+\vspace{0.5cm}
+
+\pagebreak
+
+% #################################################################################################
+
+\section{Verjetnost kot normalizirana mera}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Osnovni pojmi}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+\textit{Verjetnostni prostor} je prostor z mero $(\Omega, \F, \P)$ pri čemer je $\P$ verjetnostna. Naj bo $(\Omega, \F, \P)$ verjetnostni prostor; $A$ je $\P$-skoraj gotov ($\P$-s.g.) $\diff$ $A \in \F$ in $\P(A) = 1$. \\
+
+Če je $(E, \EE)$ merljiv prostor, potem elementom $\F/\EE$ rečemo \textit{slučajni elementi} z vrednostmi v $(E,\EE)$; v posebnem primeru, ko je $(E,\EE) = (\R, \B_\R)$ jim rečemo \textit{slučajne spremenljivke}. \\
+
+Za slučajni element $X$: $X \sim_\P Q$ $\diff$ $X$ ima zakon $Q$ pod $\P$, t.j. $X_*\P = Q$. Za dva slučajna elementa, ki imata vrednosti v istem merljivem prostoru rečemo, da sta \textit{enako porazdeljena} $\diff$ imata isti zakon. \textit{Porazdelitvena funkcija} slučajne spremenljivke $X$ je preslikava $F_X: \R \rightarrow [0,1]$ dana z $F_X(x) = \P(X \leq x)$ za $x \in \R$. \\
+
+Slučajna spremenljivka $X$ je \textit{diskretna} $\diff$ $\exists C$ števna podmnožica $\R$, da je $\P(X \in C) = 1$. Slučajna spremenljivka $X$ je \textit{absolutno zvezna} $\diff$ $\P_X \ll \LL$. Slučajna spremenljivka $X$ je \textit{zvezna} $\diff$ $F_X$ je zvezna. \\
+
+\textit{Bivarianten slučajni vektor} je element $\F/\B_{\R^2}$, torej slučajen vektor z vrednostmi v $(\R^2, \B_{\R^2})$; $(X,Y)$ je absolutno zvezen $\diff$ $\P_{(X,Y)} \ll \LL^2$, itd.
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $X$ slučajni element na verjetnostnem prostoru $(\Omega, \F, \P)$ z vrednostmi v merljivem prostoru $(E, \EE)$ in $f \in \EE/\B_{\rr}$. Potem je
+$$\P[f(X)] ~=~ \P_X[f],$$
+pri čemer je upanje na levi strani d.d. \textit{čee} je d.d upanje na desni strani.\\
+
+Za slučajno spremenljivko $X$ je $F_X$ ca'd, $\uparrow$ in $\lim_{-\infty} F_X=0$, \hbox{$\lim_\infty F_X=1$.} \\
+
+Če je $X$ diskretna slučajna spremenljivka, potem obstaja najmanjša števna množica $C \subset \R$, da $\P(X \in C) = 1$, ki ji rečemo podpora $X$, označimo s $\supp(X)$:
+$$\supp(X) ~=~ \set{x \in \R;~\P(X=x)>0},$$
+narprej, za $f \in \B_\R/\B_{\rr}$ je
+$$\P[f(X)] ~=~ \sum_{x \in \supp(X)} f(x)\P(X=x),$$
+če je le $\sum_{x \in \supp(X)} f^+(x)\P(X=x) \land \sum_{x \in \supp(X)} f^-(x)\P(X=x) < \infty$.\footnote{Potem je tudi $\P[f(X)]$ d.d.} \\
+
+Če je $X$ absolutno zvezna, potem je zvezna in obstaja do $\LL$-s.p. natančno enolična funkcija $f \in \B_\R/\B_{[0,\infty]}$ za katero je $\P_X = f \cdot \LL$; ta $f$ označimo $f_X$ in ji rečemo gostota $X$; naprej za $g \in \B_\R/\B_{\rr}$ je
+$$\P[g(X)] ~=~ \int g(x)f_X(x)\,\LL(dx),$$
+pri čemer so integrali d.d. brž ko je $\int g^+ f\,d\LL \land \int g^- f\,d\LL < \infty$. \\
+
+Končno, za to da je slučajna spremenljivka $X$ absolutno zvezna je posebno in zadostno, da $\exists f \in \B_\R/\B_{[0,\infty]}$, da je
+$$\P(X \leq x) ~=~ \int_{[-\infty,x]} f\,d\LL, \quad \forall x \in \R$$
+in v tem primeru je $f$ gostota za $X$.\footnote{Bolj splošno je ekvivalentno preveriti $\P(X \in A) = \int_A f\,d\LL$ za $A \in \Pi \cup \set{\R}$, kjer je $\Pi$ nek $\pi$-sistem, ki generira $\B_\R$ na $\R$.}\,\footnote{$\P_X = dF_X$}
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Zadržimo notacijo za gostoto $f_X$, $\supp(X)$; za diskretno slučajno spremenljivko $X$. Definiramo \textit{verjetnostno masno funkcijo} $X$ kot
+$$p_X ~:=~ \oklepaj{\supp(X) \ni x \mapsto \P(X=x)}.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+~
+\begin{enumerate}
+
+\item[(1)] Naj bo $(\Omega, \F, \P)$ verjetnostni prostor. Če je $X$ slučajna spremenljivka, potem je $F_X \in \B_\R/\B_{[0,1]}$ in $\F_X(x) \sim_\P \LL_{[0,1]}$ \textit{čee} je $X$ zvezna.
+
+\item[(2)] Obratno, naj bo $U \sim_\P \LL_{[0,1]}$. Če je $F: \R \rightarrow \R$ porazdelitvena funkcija (ca'd, $\uparrow$, $\lim_{-\infty} F=0$, $\lim_\infty F = 1$) in če vpeljemo
+$$F^{\leftarrow}(x) ~:=~ \inf\set{v \in \R;~F(v)>u}, \quad x \in (0,1),$$
+potem je
+$$F^{\leftarrow}(U) ~\sim_\P~ dF.\footnote{$F^{\leftarrow}$ je \textit{desni inverz} $F$ oz. \textit{kvantilna funkcija} $F$.}$$
+
+\end{enumerate}
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $(\Omega, \F, \P)$ verjetnostni prostor, $(X_n)_{n \in \N}$ zaporedje v $\F/\B_\R$ in $X \in \F/\B_\R$. $(X_n)_{n \in \N}$ \textit{konvergira k $X$ v $\P$-verjetnosti} $\diff$ 
+$$\forall \varepsilon \in (0,\infty): ~\P(|X_n - X| \geq \varepsilon) \xrightarrow{n \rightarrow \infty} 0.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $(\Omega, \F, \P)$ verjetnostni prostor. Če je $(X_n)_{n \in \N}$ zaporedje v $\F/\B_\R$, ki konvergira k $X \in \F/\B_\R$ s.g.-$\P$ ali v $L^q(\P)$ za nek $q \in [1,\infty]$, potem konvergira tudi v $\P$-verjetnosti.
+
+\end{trditev}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Neodvisnost}
 \vspace{0.5cm}
 
 % *************************************************************************************************
