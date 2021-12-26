@@ -8,13 +8,15 @@
 \usepackage{mathrsfs}
 \usepackage{bbm}
 \usepackage{xcolor}
+\usepackage{mathabx} % ta \bigtimes
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\A}{\mathcal{A}}
-\newcommand{\B}{\mathscr{B}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathcal{C}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\G}{\mathcal{G}}
 \renewcommand{\H}{\mathcal{H}}
@@ -24,6 +26,8 @@
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\M}{\mathcal{M}}
 \renewcommand{\L}{L}
+\newcommand{\BB}{\mathscr{B}}
+\newcommand{\CC}{\mathscr{C}}
 \newcommand{\LL}{\mathscr{L}}
 \newcommand{\EE}{\mathcal{E}}
 \renewcommand{\c}{\mathsf{c}}
@@ -36,6 +40,7 @@
 \newcommand{\floor}[1]{\lfloor#1\rfloor}
 \newcommand{\id}{\text{id}}
 \newcommand{\supp}{\text{supp}}
+\newcommand{\pr}{\text{pr}}
 
 \theoremstyle{definition}
 \newtheorem{definicija}{Definicija}[section]
@@ -1055,11 +1060,11 @@ Za slučajno spremenljivko $X$ je $F_X$ ca'd, $\uparrow$ in $\lim_{-\infty} F_X=
 $$\supp(X) ~=~ \set{x \in \R;~\P(X=x)>0},$$
 narprej, za $f \in \B_\R/\B_{\rr}$ je
 $$\P[f(X)] ~=~ \sum_{x \in \supp(X)} f(x)\P(X=x),$$
-če je le $\sum_{x \in \supp(X)} f^+(x)\P(X=x) \land \sum_{x \in \supp(X)} f^-(x)\P(X=x) < \infty$.\footnote{Potem je tudi $\P[f(X)]$ d.d.} \\
+če je le $\sum_{x \in \supp(X)} f^+(x)\P(X=x) \wedge \sum_{x \in \supp(X)} f^-(x)\P(X=x) < \infty$.\footnote{Potem je tudi $\P[f(X)]$ d.d.} \\
 
 Če je $X$ absolutno zvezna, potem je zvezna in obstaja do $\LL$-s.p. natančno enolična funkcija $f \in \B_\R/\B_{[0,\infty]}$ za katero je $\P_X = f \cdot \LL$; ta $f$ označimo $f_X$ in ji rečemo gostota $X$; naprej za $g \in \B_\R/\B_{\rr}$ je
 $$\P[g(X)] ~=~ \int g(x)f_X(x)\,\LL(dx),$$
-pri čemer so integrali d.d. brž ko je $\int g^+ f\,d\LL \land \int g^- f\,d\LL < \infty$. \\
+pri čemer so integrali d.d. brž ko je $\int g^+ f\,d\LL \wedge \int g^- f\,d\LL < \infty$. \\
 
 Končno, za to da je slučajna spremenljivka $X$ absolutno zvezna je posebno in zadostno, da $\exists f \in \B_\R/\B_{[0,\infty]}$, da je
 $$\P(X \leq x) ~=~ \int_{[-\infty,x]} f\,d\LL, \quad \forall x \in \R$$
@@ -1110,6 +1115,112 @@ Naj bo $(\Omega, \F, \P)$ verjetnostni prostor. Če je $(X_n)_{n \in \N}$ zapore
 % *************************************************************************************************
 
 \subsection{Neodvisnost}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $(\Omega, \F, \P)$ verjetnostni prostor. Za družino $\C=(\C_\lambda)_{\lambda\in\Lambda}$ podmnožic $\F$ rečemo, da je neodvisnost (pod $\P$) $\diff$ za vsako končno neprazno $I \subset \Lambda$, $\forall C_\lambda \in \C_\lambda$, $\lambda \in I$
+$$\P\oklepaj{\bigcap_{\lambda \in I} C_\lambda} ~=~ \prod_{\lambda \in I} \P(C_\lambda).$$\\
+
+Za neodvisni podmnožici $\BB$ in $\CC$ $\sigma$-algebre $\F$ je $\BB$ neodvisna od $\CC$ (pod $\P$) $\diff$ $(\BB,\CC)$ je neodvisnost (pod $\P$). Za dogodka $B$ in $C$ iz $\F$ je $B$ neodvisen od $C$ $\diff$ $\set{B}$ je neodvisna od $\set{C}$. \\
+
+Za slučajni element $Z$ z vrednostmi v merljivem prostoru $(E,\EE)$ in za $\BB \subset \F$ je $\BB$ neodvisna od $Z$ (pod $\P$ glede na $\EE$) $\diff$ $\BB$ je neodvisna od $\sigma^\EE(Z)$.\footnote{Nasploh, neodvisnost slučajnih elementov pomeni neodvisnost $\sigma$-algebr, ki so generirane z njimi.}
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $(\Omega, \F, \P)$ verjetnostni prostor, $X$ slučajni element z vrednostmi v $(E, \EE)$, $Y$ slučajni element t vrednostmi v $(A, \A)$. Potem je $(X,Y) \in \F/\EE\otimes\A$. Najprej, $X$ in $Y$ sta neodvisna od $\P$ \textit{čee} \hbox{$P_{(X,Y)} ~=~ \P_X \times \P_Y$};
+v tem primeru je za $f \in (\EE \otimes \A)/\B_{\rr}$
+$$\P[f(X,Y)] ~=~ \P_{(X,Y)}[f] ~=~ \int \P[f(x,Y)]\P_X(dx),$$
+če je le $\P[f^-(X,Y)] \wedge \P[f^+(X,Y)] < \infty$; v posebnem, za $g \in \EE/\B_{\rr}$, $h \in \A/\B_{\rr}$ je
+$$\P[g(X)h(Y)] ~=~ \P[g(X)]\P[h(Y)].$$
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $(\Omega, \F, \P)$ verjetnostni prostor in $(\C_\lambda)_{\lambda \in \Lambda}$ družina $\pi$-sistemov, $\C_\lambda \subset \F ~\forall \lambda \in \Lambda$. Če je $(\C_\lambda)_{\lambda \in \Lambda}$ neodvisnost, potem je tudi $(\sigma_\Omega(\C_\lambda))_{\lambda\in\Lambda}$ neodvisnost.
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $(\Omega, \F, \P)$ verjetnostni prostor in $(X,Y)$ absolutno zvezen bivariantni slučajni vektor. Označimo
+$$f_{(X,Y)} ~:=~ \frac{d\P_{(X,Y)}}{d\LL^2}.$$
+Potem sta $X$ in $Y$ absolutno zvezni slučjni spremenljivki;
+\begin{align*}
+f_X(x) ~&=~ \int f_{(X,Y)}(x,y)\,\LL(dy) \quad \text{s.p.-}\LL ~\text{v}~x, \\
+f_Y(y) ~&=~ \int f_{(X,Y)}(x,y)\,\LL(dx) \quad \text{s.p.-}\LL ~\text{v}~y
+\end{align*}
+ter sta $X$ in $Y$ neodvisni \textit{čee}
+$$f_{(X,Y)} ~=~ f_X(x)f_Y(y) \quad \text{s.p.-}\LL^2 ~\text{v}~ (x,y).$$
+Če sta $X$ in $Y$ neodvisni, potem je
+$$\P[g(X,Y)] ~=~ \iint g(x,y) f_X(x) f_Y(y) \,\LL(dx)\,\LL(dy)$$
+za $\forall g \in \B_{\R^2}/\B_{\rr}$ z $\P[g^+(X,Y)] \wedge \P[g^-(X,Y)] < \infty$.
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Ohranimo notacijo $f_{(X,Y)}$ za gostoto slučajnega vektorja $(X,Y)$.
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $\oklepaj{(\Omega_\lambda, \F_\lambda)}_{\lambda\in\Lambda}$ družina merljivih prostorov. Definiramo
+$$\bigotimes_{\lambda\in\Lambda} \F_\lambda ~:=~ \bigvee_{\lambda \in \Lambda} \sigma^{\F_\lambda}(\pr_\lambda),$$
+kjer so 
+\begin{align*}
+\pr_\lambda: \prod_{\mu \in \Lambda} \Omega_\mu &\rightarrow \Omega_\lambda, \quad \lambda \in \Lambda \\
+(\omega_\mu)_{\mu \in \Lambda} &\mapsto \omega_\lambda
+\end{align*}
+kanonične projekcije. Za $\sigma$-algebro $\F$ in množico $\Lambda$ je 
+$$\F^{\otimes\Lambda} ~:=~ \bigotimes_{\lambda\in\Lambda} \F.$$
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}\label{ref:3.7}
+
+Naj bo $\oklepaj{(\Omega, \F_\lambda)}_{\lambda\in\Lambda}$ družina merljivih prostorov.
+\begin{itemize}
+
+\item[(i)] $\bigotimes_{\lambda\in\Lambda} \F_X$ je najmanjša $\sigma$-algebra na $\prod_{\lambda\in\Lambda} \Omega_\lambda$ glede na katero so merljive vse kanonične projekcije $\pr_\lambda$, $\lambda\in\Lambda$.
+
+\item[(ii)] Za merljiv prostr $(\Omega, \F)$ in družino funkcij $f_\lambda: \Omega \rightarrow \Omega_\lambda$, $\lambda\in\Lambda$, je
+$$(f_\lambda)_{\lambda\in\Lambda} \in \F/(\bigotimes_{\lambda\in\Lambda} \F_\lambda) ~\iff~ f_\lambda \in \F/\F_\lambda, ~ \forall \lambda \in \Lambda.$$
+
+\item[(iii)] Naj bo $\mu_\lambda$ verjetnost na $(\Omega_\lambda, \F_\lambda)$, $\forall \lambda \in \Lambda$. Potem obstaja na $\oklepaj{\prod_{\lambda\in\Lambda}\Omega_\lambda, \bigotimes_{\lambda\in\Lambda} \F_\lambda}$ natanko ena verjetnost $\mu$ za katero so $(\pr_\lambda)_{\lambda\in\Lambda}$ neodvisni pod $\mu$ in
+$$(\pr_\lambda)_*\mu ~=~ \mu_\lambda.$$
+
+\end{itemize}
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $(\Omega, \F, \P)$ verjetnostni prostor in naj bo $f_\lambda$ slučajni element z vrednostmi v $(E_\lambda, \EE_\lambda)$, $\lambda\in\Lambda$. Potem je $(f_\lambda)_{\lambda\in\Lambda}$ neodvisnost pod $\P$ \textit{čee}
+$$\oklepaj{(f_\lambda)_{\lambda\in\Lambda}}_{*_{\otimes_{\lambda\in\Lambda}\EE_\lambda}}\P ~=~ \bigtimes_{\lambda\in\Lambda} ({f_{\lambda*}} \P).$$
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+$\mu$ iz točke (iii) v trditvi \ref{ref:3.7} označimo z 
+$$\bigtimes_{\lambda\in\Lambda} \mu_\lambda,$$
+\textit{produkt verjetnostnih mer} $\mu_\lambda$, $\lambda\in\Lambda$. Za verjetnost $\mu$ in množico $\Lambda$ velja
+$$\mu^{\times\Lambda} ~:=~ \bigtimes_{\lambda\in\Lambda} \mu_\lambda.$$
+
+\end{definicija}
 \vspace{0.5cm}
 
 % *************************************************************************************************
