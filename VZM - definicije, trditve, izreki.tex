@@ -15,19 +15,20 @@
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\A}{\mathcal{A}}
-\newcommand{\B}{\mathcal{B}}
-\newcommand{\C}{\mathcal{C}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\CC}{\mathcal{C}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\G}{\mathcal{G}}
 \renewcommand{\H}{\mathcal{H}}
+\newcommand{\I}{\mathcal{I}}
 \newcommand{\Z}{\mathcal{Z}}
 \newcommand{\X}{\mathcal{X}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\M}{\mathcal{M}}
 \renewcommand{\L}{L}
-\newcommand{\BB}{\mathscr{B}}
-\newcommand{\CC}{\mathscr{C}}
+\newcommand{\B}{\mathscr{B}}
+\newcommand{\C}{\mathcal{C}}
 \newcommand{\LL}{\mathscr{L}}
 \newcommand{\EE}{\mathcal{E}}
 \renewcommand{\c}{\mathsf{c}}
@@ -36,11 +37,15 @@
 \newcommand{\set}[1]{\{#1\}}
 \newcommand{\oklepaj}[1]{\left(#1\right)}
 \newcommand{\1}{\mathbbm{1}}
+\newcommand{\e}{\mathbbm{e}}
+\newcommand{\f}{\mathbbm{f}}
 \newcommand{\rr}{[-\infty,\infty]}
 \newcommand{\floor}[1]{\lfloor#1\rfloor}
 \newcommand{\id}{\text{id}}
 \newcommand{\supp}{\text{supp}}
 \newcommand{\pr}{\text{pr}}
+\renewcommand{\Re}{\mathfrak{Re}}
+\renewcommand{\Im}{\mathfrak{Im}}
 
 \theoremstyle{definition}
 \newtheorem{definicija}{Definicija}[section]
@@ -1221,6 +1226,180 @@ $$\bigtimes_{\lambda\in\Lambda} \mu_\lambda,$$
 $$\mu^{\times\Lambda} ~:=~ \bigtimes_{\lambda\in\Lambda} \mu_\lambda.$$
 
 \end{definicija}
+\vspace{0.5cm}
+
+% *************************************************************************************************
+
+\subsection{Pogojevanje}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Če je $(\Omega, \A, \P)$ verjetnostni prostor in $A \in \A$ z $\P(A)>0$, potem je $(A, \A\big|_A, \frac{1}{\P(A)}\P_A)$ verjetnostni prostor in
+$$\oklepaj{\frac{1}{\P(A)}\P}[f] ~=~ \frac{\P(f;A)}{\P(A)}, \quad \forall f \in \oklepaj{\A\big|_A}/\B_{\rr}.$$
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Naj bo $(\Omega, \A, \P)$ verjetnostni prostor in $A \in \A$ z $\P(A)>0$. Za $B \in \A$ definiramo
+$$\P(B \mid A) ~:=~ \frac{\P(B \cap A)}{\P(A)},$$
+\textit{verjetnost $B$ pogojno na $A$ pod $\P$}. Pišemo
+$$\P(\cdot \mid A) ~=~ \frac{1}{\P(A)}\P_A$$
+za $f \in \A/\B_{\rr}$, ali $f: \Omega \rightarrow \C$ z $\set{\Re(f), \Im(f)} \subset L^1(\P)$, postavimo
+$$\P[f \mid A] ~:=~ \frac{\P[f;A]}{\P(A)},$$
+\textit{upanje $f$ pogojno na $A$}.
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}\label{ref:3.10}
+
+Naj bo $(\Omega, \A, \P)$ verjetnostni prostor in $\BB$ pod-$\sigma$-algebra $\A$, $f \in \A/\B_{\rr}$, $\P[f^+],\P[f^-]<\infty$. Potem obstaja do $\P$-s.g. enakosti enoličen $g \in \BB/\B_{\rr}$ z $\P[g^+]\wedge\P[g^-]<\infty$, tak da je
+$$\P[f;B] ~=~ \P[g;B], \quad \forall B \in \BB,$$
+t.j. $(f\cdot\P)\big|_\BB = g(\P\big|_\BB);$ ta $g$ je $\frac{d\oklepaj{(f\cdot\P)\big|_\BB}}{d\oklepaj{\P\big|_\BB}}$ s.g.-$\P$, če je $f\geq 0$ in $\P[f]<\infty$.
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+$g$ iz trditve \ref{ref:3.10} označimo z 
+$$\P[f \mid \BB] ~:=~ \P_\BB(f) ~:=~ \P_\BB f,$$ 
+\textit{pogojno matematično upanje $f$ glede na $\BB$ pod $\P$}. Če je $\P[|f|]<\infty$ potem vztrajamo na temu, da je $|\P[f \mid \BB]|<\infty$ povsod. Za $A \in \A$ pišemo
+$$\P(A \mid \BB) ~:=~ \P[\1_A \mid \BB] ~=:~ \P_\BB(A) ~=: \P_\BB A,$$
+\textit{pogojna verjetnost glede na $\BB$ pod $\P$}. 
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $(\Omega, \A, \P)$ verjetnostni prostor, $\BB$ pod-$\sigma$-algebra $\A$ in $f \in \A/\B_{\rr}$ z $\P[f^+]\wedge\P[f^-]<\infty$. Pogojno matematično upanje ima sledeče lastnosti:
+\begin{enumerate}
+
+\item[(i)] (\textit{Stabilnost.}) Če je $f \in \BB/\B_{\rr}$, potem je
+$$\P[f \mid \BB] ~=~ f \quad \text{s.g.-}\P.$$
+
+\item[(ii)] (\textit{Zakon popolne verjetnosti/stolpna lastnosti.})
+$$\P[\P[f \mid \BB]] ~=~ \P[f]$$
+
+\item[(iii)] Naj bo $\CC$ pod-$\sigma$-algebra $\A$.
+\begin{itemize}
+	\item[(a)] (\textit{Zaporedno pogojevanje/stolpna lastnost.}) Če sta $\BB$ in $\CC$ primerljiva glede na inkluzijo je
+	$$\P[\P[f \mid \BB] \mid \CC] ~=~ \P[f \mid \BB \cap \CC] \quad \text{s.g.-}\P.$$
+	\item[(b)] (\textit{Nerelevantnost trivialnih dogodkov.}) Če je $\BB\vee\P^{-1}(\set{0,1}) = \\=\CC\vee\P^{-1}(\set{0,1})$, potem je
+	$$\P[f \mid \BB] ~=~ \P[f \mid \CC] \quad \text{s.g.-}\P.$$
+\end{itemize}
+
+\item[(iv)] (\textit{Nerelevantnost množic z mero nič.}) Če je $g \in \A/\B_{\rr}$, $\P[g^+]\wedge\P[g^-]<\infty$ in $g=f$ s.g.-$\P$ potem je 
+$$\P[f \mid \BB] ~=~ \P[g \mid \BB] \quad \text{s.g.-}\P.$$
+
+\item[(v)] (\textit{Pogojevanje na trivialno $\sigma$-algebro.}) Če je $\BB \subset \P^{-1}(\set{0,1})$, potem je
+$$\P[f \mid \BB] ~=~ \P[f] \quad \text{s.g.-}\P.$$
+V posebnem je $\P[f \mid \set{\emptyset,\infty}] = \P[f]$.
+
+\item[(vi)] (\textit{Aditivnost.}) Če je še $g \in \A/\B_{\rr}$ in $\P[f^-]\vee\P[g^-]<\infty$, potem je
+$$\P[f+g \mid \BB] ~=~ \P[f \mid \BB] + \P[g \mid \BB] \quad \text{s.g.-}\P.$$
+
+\item[(vii)] Naj bo $\P[|f|]<\infty$. Naj bo še $g \in \BB/\B_{\rr}$ z $\P[|g|]<\infty$. Če je
+$$\P[f;B] ~=~ \P[g;B], \quad \forall B \in \Pi \cup \set{\Omega}$$
+za nek $\pi$-sistem $\Pi$, ki generira $\BB$ na $\Omega$, potem je
+$$g ~=~ \P[f \mid \BB] \quad \text{s.g.-}\P.$$
+
+\item[(viii)] Za $h \in \BB/\B_{\rr}$ z $\P[(hf)^+]\wedge\P[(hf)^-]<\infty$ je
+$$\P[(h\P[f \mid \BB])^+]\wedge\P[(h\P[f \mid \BB])^-]<\infty$$ 
+in
+$$\P[fh] ~=~ \P[\P[f \mid \BB]h].$$
+
+\item[(ix)] (\textit{Pogojni determinizen/homogenost.}) Če je $g \in \BB/\B_{\rr}$ z $\P[(fg)^+]\wedge\P[(fg)^-]<\infty$, potem je
+$$\P[fg \mid \BB] ~=~ g\P[f \mid \BB] \quad \text{s.g.-}\P.$$
+V posebnem za $c \in \R$ je $\P[cf \mid \BB] = c\P[f \mid \BB]$ s.g.-$\P$.
+
+\item[(x)] (\textit{Monotonost.}) Če je $g \in \A/\B_{\rr}$ z $\P[g^-]\wedge\P[g^+]<\infty$ in če je $\P[f;B] \leq \P[g;B] ~\forall B \in \BB$ (v posebnem, če je $f\leq g$ s.g.-$\P$), potem je
+$$\P[f \mid \BB] ~\leq~ \P[g \mid \BB] \quad \text{s.g.-}\P.$$
+
+\item[(xi)] (\textit{Trikotniška neenakost.})
+$$|\P[f \mid \BB]| ~\leq~ \P[|f| \mid \BB] \quad \text{s.g.-}\P$$
+
+\item[(xii)] Za namene te točke opustimo predpostavko $\P[f^+]\wedge\P[f^-]<\infty$. Naj bo $(f_n)_{n \in \N}$ zaporedje v $\A/\B_{\rr}$ in $g \in \A/\B_{\rr}$ z $\P[g]<\infty$ in $g \geq f_n^-$ s.g.-$\P$, $\forall n \in \N$.
+\begin{itemize}
+	\item[(a)] (\textit{Monotona konvergenca.}) Če $f_n \uparrow f$, ko gre $n \rightarrow \infty$, s.g.-$\P$, potem tudi
+	$$\P[f_n \mid \BB] ~\uparrow~ \P[f \mid \BB],$$
+	ko gre $n \rightarrow \infty$, s.g.-$\P$.
+	\item[(b)] (\textit{Fatou-jeva lema.})
+	$\P[(\liminf_{n \rightarrow\infty}f_n)^-]<\infty$ in
+	$$\liminf_{n \rightarrow \infty} \P[f_n \mid \BB] ~\geq~ \P[\liminf_{n \rightarrow \infty} f_n \mid \BB] \quad \text{s.p.-}\P.$$
+	\item[(c)] (\textit{Dominirana konvergenca.}) Če je $|f_n| \leq g$ s.g.-$\P$, $\forall n \in \N$ in $f_n \xrightarrow{n \rightarrow \infty} f$ s.g.-$\P$, potem je $\P[[f]]<\infty$ in
+	$$\P[f \mid \BB] ~=~ \lim_{n \rightarrow \infty} \P[f_n \mid \BB]$$
+	s.g.-$\P$ in v $L^1(\P)$. 
+\end{itemize}
+
+\item[(xiii)] 
+\begin{itemize}
+	\item[(a)] (\textit{Neodvisno pogojevanje.}) Če je $\BB'$ še pod-$\sigma$-algebra $\A$, \hbox{$f' \in \A/\B_{\rr}$} z $\P[(f')^+]\wedge\P[(f')^-]<\infty$ in če je $\BB\vee\sigma(f)$ neodvisna od \hbox{$\BB'\vee\sigma(f')$} kot tudi $\P[(ff')^+]\wedge\P[(ff')^-]<\infty$, potem je
+	$$\P[ff' \mid \BB\vee\BB'] ~=~ \P[f \mid \BB]\P[f' \mid \BB'] \quad \text{s.g.-}\P.$$
+	\item[(b)] (\textit{Nerelevantnost neodvisnih dogodkov.}) Če je $\CC$ pod-$\sigma$-algebra $\A$, ki je neodvisna od $\BB\vee\sigma(f)$, potem je
+	$$\P[f \mid \BB\vee\CC] ~=~ \P[f \mid \BB] \quad \text{s.g.-}\P.$$
+	\item[(c)] (\textit{Pogojevanje na neodvisno $\sigma$-algebro.}) Če je $\BB$ neodvisna od $\sigma(f)$, potem je
+	$$\P[f \mid \BB] ~=~ \P[f] \quad \text{s.p.-}\P.$$
+\end{itemize}
+
+\item[(xiv)] (\textit{Jensenova neenakost.}) Če je $\varphi: I \rightarrow \R$ konveksna, $I$ interval na $\R$, $f$ jemlje vrednosti v $I$, $\P[|f|]<\infty$, potem je $\P(\P[f \mid \BB] \in I) = 1$, $\varphi \circ f \in \A/\B_\R$, $\P[(\varphi \circ f)^-]<\infty$,
+$$\P[\varphi \circ f \mid \BB] ~\geq~ \varphi \circ (\P[f \mid \BB]) \quad \text{s.g.-}\P$$
+in $f = \P[f \mid \BB]$ s.g.-$\P$ na $\set{\P[f \mid \BB] \in \partial I}$.
+
+\end{enumerate}
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $(\Omega, \A, \P)$ verjetnostni prostor. Nekaj metod za direktno računanje matematičnega upanja:
+\begin{enumerate}
+
+\item[(i)] (\textit{Diskretno pogojno matematično upanje.}) Naj bo $I \in 2^\A$ števa particija $\Omega$. Potem je za $X \in \A/\B_{\rr}$
+$$\P[X \mid \sigma_\Omega(\I)] ~=~ \sum_{I \in \I \cap \P^{-1}((0,1])} \1_I \cdot \P[X \mid I] \quad \text{s.p.-}\P,$$
+torej $\P[X \mid \sigma_\Omega(\I)] = \P[X \mid I]$ na $I$, za vsak $I \in \I$ z $\P(I)>0$.
+
+\item[(ii)] Naj bosta $(F,\F)$ in $(E,\EE)$ merljiva prostora, $X \in \A/\F$, $Y \in \A/\EE$ slučajna elementa, $h \in (\F\otimes\EE)/\B_{\rr}$, \hbox{$\P[h^+(X,Y)]\wedge\P[h^-(X,Y)]<\infty$.}
+\begin{itemize}
+	\item[(a)] (\textit{Absolutno zvezna slučajni elementa.}) Naj bosta $\f$ $\sigma$-končna mera na $(F,\F)$ in $\e$ $\sigma$-končna mera na $(E,\EE)$ in naj bo $\P_{(X,Y)} \ll \f \times \e$.\footnote{Zadnja predpostavka implicira $\P_X \ll \f$ in $\P_Y \ll \e$.} Označimo
+	$$f_{1\,2} ~:=~ \frac{d\P_{(X,Y)}}{d(\f\times\e)}, \quad f_2 ~:=~ \frac{d\P_Y}{d\e}.$$ 
+	Potem je $\P$-s.g.
+	$$\P[h(X,Y) \mid \sigma^{\EE}(Y)] ~=~ c(Y),$$
+	kjer je 
+	$$c(y) ~:=~ \int h(x,y) \frac{f_{1\,2(x,y)}}{f_2(y)}\,\f(dx)\1_{\set{f_2>0}}y, \quad y \in \E.$$
+	Naprej, $c \in \EE/\B_{\rr}$.
+	\item[(b)] (\textit{Neodvisna slučajne elementa.}) Naj bo $\G$ pod-$\sigma$-algebra $A$, da je $Y \in \G/\EE$ in $X$ neodvisna od $\G$. Potem je $\P$-s.g.
+	$$\P[h(X,Y) \mid \G] ~=~ d(Y),$$
+	kjer je 
+	$$d(y) := \P[h(X,y)], \quad y \in E.$$
+	Naprej, $d \in \EE/\B_{\rr}$.
+\end{itemize} 
+
+\end{enumerate}
+
+\end{trditev}
+\vspace{0.5cm}
+
+\begin{definicija}
+
+Če je $(\Omega, \A, \P)$ verjetnostni prostr in $Z$ slučajni element z vrednostmi v merljivem prostoru $(E,\EE)$; potem pišemo
+$$\P[f \mid Z] ~:=~ \P[f \mid \sigma^\EE(Z)]$$
+za $f \in \A/\B_{\rr}$ z $\P[f^+]\wedge\P[f^-]<\infty$.
+
+\end{definicija}
+\vspace{0.5cm}
+
+\begin{trditev}
+
+Naj bo $(\Omega, \A, \P)$ verjetnostni prostor in $Z$ slučajni element z vrednostmi v merljivem prostoru $(E,\EE)$. Za $f \in \A/\B_{\rr}$ z $\P[f^+]\wedge\P[f^-]<\infty$ obstaja $\P_Z$-s.g. enolično določen $g \in \EE/\B_{\rr}$, da je
+$$\P[f \mid Z] ~=~ g(Z) \quad \text{s.g.-}\P.$$
+
+\end{trditev}
 \vspace{0.5cm}
 
 % *************************************************************************************************
