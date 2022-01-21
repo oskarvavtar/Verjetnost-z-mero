@@ -94,7 +94,7 @@ po predavanjih profesorja Matija Vidmarja}
 Naj bo $\A \subset 2^\Omega$ (t.j. $\A \in 2^{2^\Omega}$). Potem rečemo, da je $\A$ \textit{zaprta} za:
 \begin{itemize}
 
-\item $\c^\Omega$ (t.j. za komplement v $\Omega$) 
+\item $\c^\Omega$ (t.j. za komplemente v $\Omega$) 
 $$\diff ~~~\forall A: (A \in \Omega \imp \Omega \setminus A \in \A);$$
 
 \item $\cap$ (t.j. za preseke)
@@ -159,7 +159,7 @@ Lastnosti:
 	
 	\item Mera $\mu$ na $(\Omega,\F)$ je \textit{$\sigma$-končna} $\diff$ obstaja zaporedje $(A_n)_{n\in\N}$ v $\F$, da je
 	\begin{align*}
-	\bigcup_{n\in\N} ~&=~ \Omega ~~~\text{in} \\
+	\bigcup_{n\in\N} A_n ~&=~ \Omega ~~~\text{in} \\
 	\mu(A_n) ~&<~ \infty, ~~~\forall n \in \N
 	\end{align*}
 	
@@ -172,7 +172,7 @@ $(\Omega,\F,\mu)$ je prostor z mero $\diff$ $\mu$ je mera na $(\Omega,\F)$. Če 
 Če imamo poleg tega še lastnost $P(\omega)$ v $\omega \in A$, potem
 \begin{itemize}
 	\item $P(\omega)$ drži \textit{$\mu$-skoraj povsod} ($\mu$-s.p.) v $\omega \in A$ $\diff$ 
-	$$A_{\neg P} ~:=~ \set{\omega \in \Omega \mid \neg P(\omega) \in \F ~\text{in}~ \mu(A_{\neg P}) = 0};$$
+	$$A_{\neg P} ~:=~ \set{\omega \in \Omega \mid \neg P(\omega)} \in \F$$ in $\mu(A_{\neg P}) = 0$;
 	\item $P(\omega)$ drži \textit{$\mu$-skoraj gotovo} ($\mu$-s.g.) $\diff$ $P(\omega)$ drži $\mu$-skoraj povsod in $\mu$ je verjetnostna.
 \end{itemize}
 $P$ drži $\mu$-skoraj povsod na $A$ $\diff$ $P(\omega)$ drži $\mu$-skoraj povsod v $\omega \in A$. Podobno za ostale.
@@ -187,7 +187,7 @@ Naj bo $\mu$ mera na $(\Omega, \F)$. Potem:
 
 \item[(i)] $\mu$ je aditivna: 
 $$\mu(A \cup B) ~=~ \mu(A) + \mu(B)$$
-za vsaki disjunktivni množici $A,B \in \F$.
+za vsaki disjunktni množici $A,B \in \F$.
 
 \item[(ii)] $\mu$ je monotona:
 $$\mu(A) ~\leq~ \mu(B),$$
@@ -232,10 +232,10 @@ $\mu_A := \mu\big|_{\F\big|_A}$ rečemo \textit{mera $\mu$ zožana na $A$} oz. \
 
 Naj bo $\A \subset 2^\Omega$:
 $$\sigma_\Omega(\A) ~:=~ \bigcap\set{\F \in 2^{2^\Omega} \mid \F ~\sigma\text{-algebra na}~\Omega~\text{in}~\F\supset\A},$$
-rečemo $\sigma$-algebra z $A$ na $\Omega$. Če sta $\B_1$ in $\B_2$ obe $\sigma$-algebri na $\Omega$, potem definiramo
-$$\B_1 \vee \B_2 ~:=~ \sigma_\Omega(\B_1 \cup \B_2)$$
-in ji rečemo skupek $\B_1$ in $\B_2$. Bolj splošno, če imamo družino $\sigma$-algebr $(B_\lambda)_{\lambda\in\Lambda}$ na $\Omega$, potem postavimo
-$$\bigvee_{\lambda\in\Lambda} \B_\lambda ~:=~ \sigma_\Omega\oklepaj{\bigcup_{\lambda\in\Lambda} \B_\lambda}.$$
+rečemo $\sigma$-algebra z $A$ na $\Omega$. Če sta $\BB_1$ in $\BB_2$ obe $\sigma$-algebri na $\Omega$, potem definiramo
+$$\BB_1 \vee \BB_2 ~:=~ \sigma_\Omega(\BB_1 \cup \BB_2)$$
+in ji rečemo skupek $\BB_1$ in $\BB_2$. Bolj splošno, če imamo družino $\sigma$-algebr $(\BB_\lambda)_{\lambda\in\Lambda}$ na $\Omega$, potem postavimo
+$$\bigvee_{\lambda\in\Lambda} \BB_\lambda ~:=~ \sigma_\Omega\oklepaj{\bigcup_{\lambda\in\Lambda} \BB_\lambda}.$$
 
 \end{definicija}
 \vspace{0.5cm}
@@ -243,9 +243,9 @@ $$\bigvee_{\lambda\in\Lambda} \B_\lambda ~:=~ \sigma_\Omega\oklepaj{\bigcup_{\la
 \begin{definicija}
 
 Naj bo $f: \Omega \rightarrow \Omega'$. Če je dana $\sigma$-algebra $\F'$ na $\Omega'$, potem definiramo
-$$\sigma^{\F'}(f) ~:=~ \set{f^{-1}(A'); ~A' \in \F'}.$$
-Začetno strukturo $f$ glede na $\F'$ (tudi, $\sigma$-algebra generirana s $f$ glede na $\F'$). Če je dana $\sigma$-algebra $\F$ na $\Omega$, potem definiramo
-$$\sigma_\F^{\Omega'}(f) ~:=~ \set{A' \in 2^{\Omega'} \mid f^{-1}(A') \in \F}$$
+$$\sigma^{\F'}(f) ~:=~ \set{f^{-1}(A'); ~A' \in \F'},$$
+začetno strukturo $f$ glede na $\F'$ (tudi, $\sigma$-algebra generirana s $f$ glede na $\F'$). Če je dana $\sigma$-algebra $\F$ na $\Omega$, potem definiramo
+$$\sigma_\F^{\Omega'}(f) ~:=~ \set{A' \in 2^{\Omega'} \mid f^{-1}(A') \in \F},$$
 končno strukturo $f$ na $\Omega'$ glede na $\F$. Če sta dani $\sigma$-algebri $\F$ na $\Omega$ in $\sigma$-algebra $\F'$ na $\Omega$, potem rečemo: $f$ je $\F/\F'$-merljiva $\diff$
 $$f^{-1}(A') \in \F, ~~~\forall A' \in \F'.$$
 
@@ -287,12 +287,12 @@ Naj bo $f: \Omega \rightarrow \Omega'$:
 
 \item[(i)] Za $\sigma$-algebro $\F'$ na $\Omega'$ je $\sigma^{\F'}(f)$ $\sigma$-algebra na $\Omega$; ona je najmanjša (glede na inkluzijo) $\sigma$-algebra $\G$ na $\Omega$, da je $f \in \G/\F'$.
 
-\item[(ii)] Za $\sigma$-algebro $\F$ na $\Omega$ je $\sigma_F^{\Omega'}(f)$ $\sigma$-algebra na $\Omega'$; ona je največja (glede na inkluzijo) $\sigma$-algebra $\G'$ na $\Omega$, da je $f \in \F/\G$.
+\item[(ii)] Za $\sigma$-algebro $\F$ na $\Omega$ je $\sigma_F^{\Omega'}(f)$ $\sigma$-algebra na $\Omega'$; ona je največja (glede na inkluzijo) $\sigma$-algebra $\G'$ na $\Omega$, da je $f \in \F/\G'$.
 
 \item[(iii)] Za $\sigma$-algebro $\F$ na $\Omega$ in $\sigma$-algebro $\F'$ na $\Omega'$ je
 $$f \in \F/\F' ~\iff~ \sigma^{\F'}(f) \subset \F ~\iff~ \F' \subset \sigma_\F^{\Omega'}(f).$$
 
-\item[(iv)] Naj bo $\A' \sigma 2^{\Omega'}$ ter $\F$ $\sigma$-algebra na $\Omega$. Potem je
+\item[(iv)] Naj bo $\A' \subset 2^{\Omega'}$ ter $\F$ $\sigma$-algebra na $\Omega$. Potem je
 $$f \in \F/\sigma_{\Omega'}(\A') ~\iff~ (f^{-1}(A') \in \F, ~\forall A' \in \A').$$
 Velja tudi 
 $$\sigma^{\sigma_{\Omega'}(\A')}(f) ~=~ \sigma_\Omega(\set{f^{-1}(A') \mid A' \in \A'}).$$
@@ -326,7 +326,7 @@ Naj bo $f: \Omega \rightarrow \Omega'$ in naj bo $\F$ $\sigma$-algebra na $\Omeg
 \item[(i)] Če je $A' \subset \Omega'$ in $f: \Omega \rightarrow A'$, potem je 
 $$f \in \F/\F' ~\iff~ f \in \F/(\F' \big|_{A'}).$$
 
-\item[(ii)] Če je $A \in \Omega$ in $f \in \F/\F'$, potem
+\item[(ii)] Če je $A \subset \Omega$ in $f \in \F/\F'$, potem
 $$f\big|_A \in (\F\big|_A)/\F'.$$
 
 \item[(iii)] Če je $(A_i)_{i \in \N}$ zaporedje v $\F$ in $\Omega = \bigcup_{i \in \N} A_i$ in je $f\big|_{A_i} \in (\F\big|_{A_i})/\F' \\\forall i \in \N$, potem je
@@ -501,7 +501,7 @@ $$Y \in \sigma^\A(X)/\B_{\rr} ~\iff~ \exists h \in \A/\B_{\rr}, ~\text{da je}~ Y
 
 \begin{definicija}
 
-Naj bo $\D \subset 2^\Omega$. $D$ je Dynkinov sistem (tudi $\lambda$-sistem) na $\Omega$ $\diff$
+Naj bo $\D \subset 2^\Omega$. $\D$ je Dynkinov sistem (tudi $\lambda$-sistem) na $\Omega$ $\diff$
 \begin{itemize}
 	\item $\Omega \in \D$,
 	\item $B\setminus A \in \D $ brž ko je $ \D \ni A \subset B \in \D$,
@@ -618,7 +618,7 @@ Naj bo $(\Omega, \F, \mu)$ prostor z mero $f \in \F/\B_{\rr}$.
 \begin{enumerate}
 
 \item[(a)] Za $f$, ki je $\F$-enostavna postavimo
-$$\int f\,d\mu ~:=~ \sum_{a \in \Z_f} d\mu(\set{f=a}) ~=~ \sum_{a \in \Z_f} d\mu(f^{-1}(\set{a})).$$
+$$\int f\,d\mu ~:=~ \sum_{a \in \Z_f} a\mu(\set{f=a}) ~=~ \sum_{a \in \Z_f} d\mu(f^{-1}(\set{a})).$$
 
 \item[(b)] Za $f \geq 0$, ki ni $\F$-enostavna postavimo
 $$\int f\,d\mu ~:=~ \sup\set{\int g\,d\mu \mid g \leq f,~ g ~\F\text{-enostavna}}.$$
@@ -716,14 +716,14 @@ Naj bo $(\Omega, \F,\mu)$ prostor z mero in $(f_n)_{n \in \N}$ zaporedje iz $\F/
 \begin{itemize}
 	\item[(a)] Polzveznost od spodaj (Fatou):
 	$$\int \liminf_{n \rightarrow \infty} f_n \,d\mu ~\leq \liminf_{n \rightarrow \infty} \int f_n \,d\mu$$
-	\item[(b)] Monotona konvergenca (L\'evy):
+	\item[(b)] Monotona konvergenca (Levi):
 	$$\int \lim_{n \rightarrow \infty} f_n \,d\mu ~=~ \uparrow\text{-}\lim_{n \rightarrow \infty} \int f_n d\mu$$
 \end{itemize}
 
 \item[(ii)] Naj bo $g \in \F/\B_{[0,\infty]}$ $\mu$-integrabilna z $|f_n| \leq g ~\forall n \in \N$. Potem velja dominirana konvergenca (Lebesgue):
 $$\lim_{n \rightarrow \infty} \int |f_n - \lim_{m \rightarrow \infty} f_m| \,d\mu ~=~ 0$$ 
 in v posebnem je
-$$lim_{n \rightarrow \infty} \int f_n \,d\mu ~=~ \int \lim_{n \rightarrow \infty} f_n \,d\mu,$$
+$$\lim_{n \rightarrow \infty} \int f_n \,d\mu ~=~ \int \lim_{n \rightarrow \infty} f_n \,d\mu,$$
 če seveda $\exists \lim_{m \rightarrow \infty} f_m$ (povsod).
 
 \end{itemize}
@@ -755,9 +755,9 @@ $$\int f \,d(\sum_{n \in \N} \mu_n) ~=~ \sum_{n \in \N} \int f \,d\mu_n.$$
 \begin{definicija}
 
 Naj bo $(\Omega, \F, \mu)$ porostor z mero, $(\Omega', \F')$ merljiv prostor, $f \in \F/\F'$. Potem definiramo
-$$f *_{\F'} \mu \quad \text{oz.} \quad \mu \circ_{\F'} f^{-1} \quad \text{oz.} \quad \mu_{f_{\F'}}$$
-kot preslikavo $f *_{\F'} \mu: \F' \rightarrow [0,\infty]$, dano s predpisom
-$$(f *_{\F'} \mu)(A') ~:=~ \mu(f^{-1}(A')), \quad A' \in \F'.$$
+$$f_{*_{\F'}} \mu \quad \text{oz.} \quad \mu \circ_{\F'} f^{-1} \quad \text{oz.} \quad \mu_{f_{\F'}}$$
+kot preslikavo $f_{*_{\F'}} \mu: \F' \rightarrow [0,\infty]$, dano s predpisom
+$$(f_{*_{\F'}} \mu)(A') ~:=~ \mu(f^{-1}(A')), \quad A' \in \F'.$$
 To preslikavo imenujemo \textit{potisk mere $\mu$ naprej pod $f$ glede na $\F'$}. Če je $\mu$ verjetnostna, rečemo temu \textit{porazdelitev}.
 
 \end{definicija}
@@ -765,8 +765,8 @@ To preslikavo imenujemo \textit{potisk mere $\mu$ naprej pod $f$ glede na $\F'$}
 
 \begin{posledica}[Izrek o sliki mer]
 
-Naj bo $(\Omega, \F, \mu)$ prostor z mero, $(\Omega', \F')$ merljiv prostor, $f \in \F/\F'$. Potem je $f * \mu$ mera na $\F'$, verjetnostna, če je $\mu$ verjetnostna. Če je $g \in \F'/\B_{\rr},$ je
-$$\int g \,d(f*\mu) ~=~ \int g \circ f \,d\mu,$$
+Naj bo $(\Omega, \F, \mu)$ prostor z mero, $(\Omega', \F')$ merljiv prostor, $f \in \F/\F'$. Potem je $f_* \mu$ mera na $\F'$, verjetnostna, če je $\mu$ verjetnostna. Če je $g \in \F'/\B_{\rr},$ je
+$$\int g \,d(f_*\mu) ~=~ \int g \circ f \,d\mu,$$
 pri čemer je integral na levi d.d. $\iff$ je to res za integral na desni.
 
 \end{posledica}
@@ -776,8 +776,8 @@ pri čemer je integral na levi d.d. $\iff$ je to res za integral na desni.
 
 Naj bo $(\X, \Sigma, \mu)$ prostor z mero, $\O$ odprt v $\R$. $F: \X \times \O \rightarrow \R$ in naj velja:
 \begin{itemize}
-	\item $\forall t \in \O$ je $\F(\cdot,t) \in \L^1(\mu)$;
-	\item $\forall x \in \X$ je $\F(x,\cdot)$ odvedljiva.
+	\item $\forall t \in \O$ je $F(\cdot,t) \in \L^1(\mu)$;
+	\item $\forall x \in \X$ je $F(x,\cdot)$ odvedljiva.
 \end{itemize}
 Naj naprej $\exists g \in \Sigma/\B_{[0,\infty]}$ z $\mu[g]<\infty$ tako, da je
 $$\left|\frac{\partial F}{\partial t}(x,t)\right| ~\leq~ g(x), \quad \forall (x,t) \in \X \times \O.$$
@@ -893,7 +893,7 @@ rečemo \textit{nedoločeni integral $f$ proti $\mu$}\footnote{Beri: glede na $\
 \begin{definicija}
 
 Naj bosta $\mu$ in $\nu$ dve meri na merljivem prostoru $(\Omega,\F)$. $\mu$ je absolutno zvezna glede na $\nu$ (pišemo $\mu \ll \nu$) $\diff$
-$$\nu(A) = 0 ~\Rightarrow~ \mu(A), \quad \forall A \in \F.$$
+$$\nu(A) = 0 ~\Rightarrow~ \mu(A) = 0, \quad \forall A \in \F.$$
 $\mu$ je ekvivalentna $\nu$, (pišemo $\mu\sim\nu$) $\diff$
 $$\mu \ll \nu \quad \text{in} \quad \nu \ll \mu.$$
 
@@ -903,7 +903,7 @@ $$\mu \ll \nu \quad \text{in} \quad \nu \ll \mu.$$
 \begin{trditev}
 
 Naj bo $(\Omega,\F,\mu)$ prostor z mero in $f \in \F/\B_{[0,\infty]}$. Potem je $f \cdot \mu$ mera, ki je absolutno zvezna glede na $\mu$; naprej
-$$\int g \,d(f\cdot\mu) ~=~ \int g\,\color{teal}f(d\mu)\color{black}$$
+$$\int g \,d(f\cdot\mu) ~=~ \int gf\,d\mu$$
 za vse $g \in \F/\B_{\rr},$ pri čemer je integral na levi d.d. $\iff$ je integral na desni d.d. in v slednjem primeru je 
 $$g \cdot (f \cdot \mu) ~=~ (gf) \cdot \mu.$$
 Če je $f>0$ s.p.-$\mu$, potem je $f\cdot\mu \sim \mu$.
@@ -956,7 +956,7 @@ Funkcijo $f$ iz zgornjega izreka označimo z $$\frac{d\mu}{d\nu}.$$ Rečemo ji \
 
 \begin{posledica}
 
-Naj bodo $\mu \ll \nu \ll \lambda$ $\sigma$-končne mere na $\sigma-algebri$. Potem je $\mu \ll \lambda$ in 
+Naj bodo $\mu \ll \nu \ll \lambda$ $\sigma$-končne mere na $\sigma$-algebri. Potem je $\mu \ll \lambda$ in 
 $$\frac{d\mu}{d\lambda} ~=~ \frac{d\mu}{d\nu}\cdot\frac{d\nu}{d\lambda} \quad \text{s.p.-}\lambda.$$
 Torej, če je $\mu \sim \nu$,
 $$1 ~=~ \frac{d\mu}{d\nu}\frac{d\nu}{d\mu} \quad \text{s.p.-}\mu ~\text{in}~ \text{s.p.-}\nu.$$
@@ -1063,7 +1063,7 @@ Za slučajno spremenljivko $X$ je $F_X$ ca'd, $\uparrow$ in $\lim_{-\infty} F_X=
 
 Če je $X$ diskretna slučajna spremenljivka, potem obstaja najmanjša števna množica $C \subset \R$, da $\P(X \in C) = 1$, ki ji rečemo podpora $X$, označimo s $\supp(X)$:
 $$\supp(X) ~=~ \set{x \in \R;~\P(X=x)>0},$$
-narprej, za $f \in \B_\R/\B_{\rr}$ je
+naprej, za $f \in \B_\R/\B_{\rr}$ je
 $$\P[f(X)] ~=~ \sum_{x \in \supp(X)} f(x)\P(X=x),$$
 če je le $\sum_{x \in \supp(X)} f^+(x)\P(X=x) \wedge \sum_{x \in \supp(X)} f^-(x)\P(X=x) < \infty$.\footnote{Potem je tudi $\P[f(X)]$ d.d.} \\
 
@@ -1071,7 +1071,7 @@ $$\P[f(X)] ~=~ \sum_{x \in \supp(X)} f(x)\P(X=x),$$
 $$\P[g(X)] ~=~ \int g(x)f_X(x)\,\LL(dx),$$
 pri čemer so integrali d.d. brž ko je $\int g^+ f\,d\LL \wedge \int g^- f\,d\LL < \infty$. \\
 
-Končno, za to da je slučajna spremenljivka $X$ absolutno zvezna je posebno in zadostno, da $\exists f \in \B_\R/\B_{[0,\infty]}$, da je
+Končno, za to da je slučajna spremenljivka $X$ absolutno zvezna je potrebno in zadostno, da $\exists f \in \B_\R/\B_{[0,\infty]}$, da je
 $$\P(X \leq x) ~=~ \int_{[-\infty,x]} f\,d\LL, \quad \forall x \in \R$$
 in v tem primeru je $f$ gostota za $X$.\footnote{Bolj splošno je ekvivalentno preveriti $\P(X \in A) = \int_A f\,d\LL$ za $A \in \Pi \cup \set{\R}$, kjer je $\Pi$ nek $\pi$-sistem, ki generira $\B_\R$ na $\R$.}\,\footnote{$\P_X = dF_X$}
 
@@ -1084,13 +1084,13 @@ Zadržimo notacijo za gostoto $f_X$, $\supp(X)$; za diskretno slučajno spremenl
 $$p_X ~:=~ \oklepaj{\supp(X) \ni x \mapsto \P(X=x)}.$$
 
 \end{definicija}
-\vspace{0.5cm}
+\vspace{1cm}
 
 \begin{trditev}
 ~
 \begin{enumerate}
 
-\item[(1)] Naj bo $(\Omega, \F, \P)$ verjetnostni prostor. Če je $X$ slučajna spremenljivka, potem je $F_X \in \B_\R/\B_{[0,1]}$ in $\F_X(x) \sim_\P \LL_{[0,1]}$ \textit{čee} je $X$ zvezna.
+\item[(1)] Naj bo $(\Omega, \F, \P)$ verjetnostni prostor. Če je $X$ slučajna spremenljivka, potem je $F_X \in \B_\R/\B_{[0,1]}$ in $F_X(x) \sim_\P \LL_{[0,1]}$ \textit{čee} je $X$ zvezna.
 
 \item[(2)] Obratno, naj bo $U \sim_\P \LL_{[0,1]}$. Če je $F: \R \rightarrow \R$ porazdelitvena funkcija (ca'd, $\uparrow$, $\lim_{-\infty} F=0$, $\lim_\infty F = 1$) in če vpeljemo
 $$F^{\leftarrow}(x) ~:=~ \inf\set{v \in \R;~F(v)>u}, \quad x \in (0,1),$$
@@ -1136,7 +1136,7 @@ Za slučajni element $Z$ z vrednostmi v merljivem prostoru $(E,\EE)$ in za $\BB 
 
 \begin{trditev}
 
-Naj bo $(\Omega, \F, \P)$ verjetnostni prostor, $X$ slučajni element z vrednostmi v $(E, \EE)$, $Y$ slučajni element t vrednostmi v $(A, \A)$. Potem je $(X,Y) \in \F/\EE\otimes\A$. Najprej, $X$ in $Y$ sta neodvisna od $\P$ \textit{čee} \hbox{$P_{(X,Y)} ~=~ \P_X \times \P_Y$};
+Naj bo $(\Omega, \F, \P)$ verjetnostni prostor, $X$ slučajni element z vrednostmi v $(E, \EE)$, $Y$ slučajni element t vrednostmi v $(A, \A)$. Potem je $(X,Y) \in \F/\EE\otimes\A$. Najprej, $X$ in $Y$ sta neodvisna pod $\P$ \textit{čee} \hbox{$P_{(X,Y)} ~=~ \P_X \times \P_Y$};
 v tem primeru je za $f \in (\EE \otimes \A)/\B_{\rr}$
 $$\P[f(X,Y)] ~=~ \P_{(X,Y)}[f] ~=~ \int \P[f(x,Y)]\P_X(dx),$$
 če je le $\P[f^-(X,Y)] \wedge \P[f^+(X,Y)] < \infty$; v posebnem, za $g \in \EE/\B_{\rr}$, $h \in \A/\B_{\rr}$ je
@@ -1187,7 +1187,7 @@ kjer so
 (\omega_\mu)_{\mu \in \Lambda} &\mapsto \omega_\lambda
 \end{align*}
 kanonične projekcije. Za $\sigma$-algebro $\F$ in množico $\Lambda$ je 
-$$\F^{\otimes\Lambda} ~:=~ \bigotimes_{\lambda\in\Lambda} \F.$$
+$$\F^{\otimes\Lambda} ~:=~ \bigotimes_{\lambda\in\Lambda} \F_\lambda.$$
 
 \end{definicija}
 \vspace{0.5cm}
@@ -1197,7 +1197,7 @@ $$\F^{\otimes\Lambda} ~:=~ \bigotimes_{\lambda\in\Lambda} \F.$$
 Naj bo $\oklepaj{(\Omega, \F_\lambda)}_{\lambda\in\Lambda}$ družina merljivih prostorov.
 \begin{itemize}
 
-\item[(i)] $\bigotimes_{\lambda\in\Lambda} \F_X$ je najmanjša $\sigma$-algebra na $\prod_{\lambda\in\Lambda} \Omega_\lambda$ glede na katero so merljive vse kanonične projekcije $\pr_\lambda$, $\lambda\in\Lambda$.
+\item[(i)] $\bigotimes_{\lambda\in\Lambda} \F_\lambda$ je najmanjša $\sigma$-algebra na $\prod_{\lambda\in\Lambda} \Omega_\lambda$ glede na katero so merljive vse kanonične projekcije $\pr_\lambda$, $\lambda\in\Lambda$.
 
 \item[(ii)] Za merljiv prostr $(\Omega, \F)$ in družino funkcij $f_\lambda: \Omega \rightarrow \Omega_\lambda$, $\lambda\in\Lambda$, je
 $$(f_\lambda)_{\lambda\in\Lambda} \in \F/(\bigotimes_{\lambda\in\Lambda} \F_\lambda) ~\iff~ f_\lambda \in \F/\F_\lambda, ~ \forall \lambda \in \Lambda.$$
@@ -1236,7 +1236,7 @@ $$\mu^{\times\Lambda} ~:=~ \bigtimes_{\lambda\in\Lambda} \mu_\lambda.$$
 \begin{trditev}
 
 Če je $(\Omega, \A, \P)$ verjetnostni prostor in $A \in \A$ z $\P(A)>0$, potem je $(A, \A\big|_A, \frac{1}{\P(A)}\P_A)$ verjetnostni prostor in
-$$\oklepaj{\frac{1}{\P(A)}\P}[f] ~=~ \frac{\P(f;A)}{\P(A)}, \quad \forall f \in \oklepaj{\A\big|_A}/\B_{\rr}.$$
+$$\oklepaj{\frac{1}{\P(A)}\P}[f] ~=~ \frac{\P[f;A]}{\P(A)}, \quad \forall f \in \oklepaj{\A\big|_A}/\B_{\rr}.$$
 
 \end{trditev}
 \vspace{0.5cm}
@@ -1246,8 +1246,8 @@ $$\oklepaj{\frac{1}{\P(A)}\P}[f] ~=~ \frac{\P(f;A)}{\P(A)}, \quad \forall f \in 
 Naj bo $(\Omega, \A, \P)$ verjetnostni prostor in $A \in \A$ z $\P(A)>0$. Za $B \in \A$ definiramo
 $$\P(B \mid A) ~:=~ \frac{\P(B \cap A)}{\P(A)},$$
 \textit{verjetnost $B$ pogojno na $A$ pod $\P$}. Pišemo
-$$\P(\cdot \mid A) ~=~ \frac{1}{\P(A)}\P_A$$
-za $f \in \A/\B_{\rr}$, ali $f: \Omega \rightarrow \C$ z $\set{\Re(f), \Im(f)} \subset L^1(\P)$, postavimo
+$$\P(\cdot \mid A) ~=~ \frac{1}{\P(A)}\P_A.$$
+Za $f \in \A/\B_{\rr}$, ali $f: \Omega \rightarrow \C$ z $\set{\Re(f), \Im(f)} \subset L^1(\P)$, postavimo
 $$\P[f \mid A] ~:=~ \frac{\P[f;A]}{\P(A)},$$
 \textit{upanje $f$ pogojno na $A$}.
 
@@ -1373,7 +1373,7 @@ torej $\P[X \mid \sigma_\Omega(\I)] = \P[X \mid I]$ na $I$, za vsak $I \in \I$ z
 	kjer je 
 	$$c(y) ~:=~ \int h(x,y) \frac{f_{1\,2(x,y)}}{f_2(y)}\,\f(dx)\1_{\set{f_2>0}}y, \quad y \in \E.$$
 	Naprej, $c \in \EE/\B_{\rr}$.
-	\item[(b)] (\textit{Neodvisna slučajne elementa.}) Naj bo $\G$ pod-$\sigma$-algebra $A$, da je $Y \in \G/\EE$ in $X$ neodvisna od $\G$. Potem je $\P$-s.g.
+	\item[(b)] (\textit{Neodvisna slučajne elementa.}) Naj bo $\G$ pod-$\sigma$-algebra $\A$, da je $Y \in \G/\EE$ in $X$ neodvisna od $\G$. Potem je $\P$-s.g.
 	$$\P[h(X,Y) \mid \G] ~=~ d(Y),$$
 	kjer je 
 	$$d(y) := \P[h(X,y)], \quad y \in E.$$
@@ -1387,7 +1387,7 @@ torej $\P[X \mid \sigma_\Omega(\I)] = \P[X \mid I]$ na $I$, za vsak $I \in \I$ z
 
 \begin{definicija}
 
-Če je $(\Omega, \A, \P)$ verjetnostni prostr in $Z$ slučajni element z vrednostmi v merljivem prostoru $(E,\EE)$; potem pišemo
+Če je $(\Omega, \A, \P)$ verjetnostni prostor in $Z$ slučajni element z vrednostmi v merljivem prostoru $(E,\EE)$; potem pišemo
 $$\P[f \mid Z] ~:=~ \P[f \mid \sigma^\EE(Z)]$$
 za $f \in \A/\B_{\rr}$ z $\P[f^+]\wedge\P[f^-]<\infty$.
 
